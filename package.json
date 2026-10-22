@@ -1,0 +1,13 @@
+{
+  "name": "sentri-smm",
+  "private": true,
+  "description": "sentri.az social media templates: posts (PNG) and reels (MP4) from JSON",
+  "scripts": {
+    "render": "node scripts/render.js",
+    "render:all": "node scripts/render.js all",
+    "preview": "node scripts/render.js preview"
+  },
+  "dependencies": {
+    "playwright": "1.56.1"
+  }
+}

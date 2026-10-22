@@ -1,0 +1,28 @@
+{
+  "scenes": [
+    {
+      "type": "hook",
+      "badge": "Biznes sahibləri üçün",
+      "title": "Serveriniz sabah\nşifrələnsə,\n**məlumatlarınız harada?**"
+    },
+    {
+      "type": "text",
+      "title": "Fidyə virusu (ransomware)\n__bütün faylları kilidləyir__",
+      "subtitle": "Ehtiyat nüsxəsi olmayan şirkət\nya ödəyir, ya da hər şeyi itirir."
+    },
+    {
+      "type": "list",
+      "title": "**3-2-1** qaydası",
+      "items": [
+        "Məlumatın **3** nüsxəsi olsun",
+        "**2** fərqli daşıyıcıda saxlanılsın",
+        "**1** nüsxə ofisdən kənarda (offline) olsun"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Backup sisteminiz\nhəqiqətən işləyir?",
+      "button": "Pulsuz yoxlama üçün yazın"
+    }
+  ]
+}

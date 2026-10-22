@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<title>sentri.az post</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+  /* Sizes: post 1080x1350 (4:5 feed), square 1080x1080, story 1080x1920 */
+  .canvas { width: 1080px; height: 1350px; padding: 96px 84px 72px; display: flex; flex-direction: column; --glow-y: 18%; }
+  .canvas.square { height: 1080px; }
+  .canvas.story { height: 1920px; padding-top: 200px; padding-bottom: 220px; }
+
+  .hero { position: absolute; inset: 0; background-size: cover; background-position: center bottom; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, var(--bg) 0%, rgba(16, 29, 58, 0.9) 45%, rgba(16, 29, 58, 0.15) 68%, rgba(16, 29, 58, 0.75) 100%);
+  }
+
+  .logo { width: 96px; height: 96px; }
+  .top { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+
+  .eyebrow { font-weight: 600; font-size: 26px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue-soft); margin-bottom: 18px; }
+  h1 { font-weight: 800; font-size: 68px; line-height: 1.12; text-transform: uppercase; letter-spacing: 1px; }
+  h1 .accent-orange { text-transform: none; font-weight: 600; letter-spacing: 0; }
+  h1.normal-case { text-transform: none; }
+
+  ul { list-style: none; margin-top: 54px; display: grid; gap: 22px; }
+  li { font-size: 36px; line-height: 1.35; display: flex; gap: 18px; color: #e6edfb; }
+  li::before { content: "✧"; color: var(--white); }
+
+  .spacer { flex: 1; }
+
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+  .note { font-size: 30px; line-height: 1.4; max-width: 560px; }
+  .note b { font-weight: 700; }
+  .note::after { content: ""; display: block; width: 240px; height: 5px; border-radius: 3px; margin-top: 22px; background: var(--blue); }
+  .contacts { font-size: 26px; display: grid; gap: 14px; text-align: right; white-space: nowrap; }
+  .contacts span { display: inline-flex; align-items: center; gap: 12px; justify-content: flex-end; }
+  .contacts svg { width: 26px; height: 26px; stroke: var(--blue-soft); fill: none; stroke-width: 2; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="common.js"></script>
+<script>
+const ICON_PHONE = '<svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>';
+const ICON_MAIL = '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+
+loadData().then((d) => {
+  const c = el("div", "canvas " + (d.format || "post"));
+  if (d.image) {
+    const hero = el("div", "hero");
+    hero.style.backgroundImage = `url("/${d.image}")`;
+    c.append(hero);
+  }
+  c.append(el("div", "top", LOGO));
+  // Without a photo, centre the text block in the free space
+  if (!d.image) c.append(el("div", "spacer"));
+  if (d.eyebrow) c.append(el("div", "eyebrow", rich(d.eyebrow)));
+  const h1 = el("h1", d.uppercase === false ? "normal-case" : "", rich(d.headline));
+  if (d.headlineSize) h1.style.fontSize = d.headlineSize + "px";
+  c.append(h1);
+  if (d.bullets?.length) {
+    const ul = el("ul");
+    d.bullets.forEach((b) => ul.append(el("li", null, rich(b))));
+    c.append(ul);
+  }
+  c.append(el("div", "spacer"));
+  const footer = el("div", "footer");
+  footer.append(el("div", "note", rich(d.footer || "").replace(/<span class="accent-orange">(.+?)<\/span>/g, "<b>$1</b>")));
+  footer.append(el("div", "contacts",
+    `<span>${ICON_PHONE}${d.phone || BRAND.phone}</span><span>${ICON_MAIL}${d.email || BRAND.email}</span>`));
+  c.append(footer);
+  document.getElementById("root").append(c);
+  return document.fonts.ready;
+}).then(() => { window.READY = true; });
+</script>
+</body>
+</html>

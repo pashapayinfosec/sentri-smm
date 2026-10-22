@@ -1,0 +1,53 @@
+/* sentri.az brand tokens, shared by the post and reel templates */
+@font-face { font-family: "Poppins"; font-weight: 400; src: url("../assets/fonts/Poppins-Regular.ttf"); }
+@font-face { font-family: "Poppins"; font-weight: 500; src: url("../assets/fonts/Poppins-Medium.ttf"); }
+@font-face { font-family: "Poppins"; font-weight: 600; src: url("../assets/fonts/Poppins-SemiBold.ttf"); }
+@font-face { font-family: "Poppins"; font-weight: 700; src: url("../assets/fonts/Poppins-Bold.ttf"); }
+@font-face { font-family: "Poppins"; font-weight: 800; src: url("../assets/fonts/Poppins-ExtraBold.ttf"); }
+
+:root {
+  --bg: #101d3a;
+  --bg-2: #1c305a;
+  --glow: #3770cc;
+  --blue: #448bff;
+  --blue-soft: #8fb6ff;
+  --orange: #f5a524;
+  --red: #ff4d5e;
+  --white: #ffffff;
+  --muted: #a9b8d6;
+  --card: rgba(38, 60, 104, 0.72);
+  --card-line: rgba(143, 182, 255, 0.22);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Navy canvas with the blue radial glow and faint grid from the reference reel */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% var(--glow-y, 32%), rgba(68, 139, 255, 0.55), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 55%, var(--bg) 100%);
+}
+.canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(143, 182, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 182, 255, 0.05) 1px, transparent 1px);
+  background-size: 90px 90px;
+  pointer-events: none;
+}
+.canvas > * { position: relative; }
+
+.accent-orange { color: var(--orange); }
+.accent-blue { color: var(--blue); }
+.accent-red { color: var(--red); }

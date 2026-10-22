@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<title>sentri.az reel</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+  html, body { background: #000; }
+  .canvas { width: 1080px; height: 1920px; --glow-y: 30%; }
+  .scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding: 300px 70px 200px; text-align: center; }
+
+  .brandbar { position: absolute; top: 140px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 14px; font-size: 30px; color: var(--muted); z-index: 5; }
+  .brandbar .logo { width: 46px; height: 46px; opacity: 0.9; }
+
+  .badge { display: inline-flex; align-items: center; gap: 12px; padding: 12px 28px; border-radius: 40px; background: rgba(245, 165, 36, 0.16); border: 2px solid rgba(245, 165, 36, 0.55); color: var(--orange); font-weight: 700; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; margin-top: 60px; }
+  .title { font-weight: 700; font-size: 66px; line-height: 1.22; margin-top: 56px; }
+  .subtitle { font-size: 38px; line-height: 1.45; color: #dce5f7; margin-top: 40px; }
+  .hook { justify-content: flex-start; padding-top: 440px; }
+  .hook .title { font-size: 64px; }
+
+  /* Email mock */
+  .mail { width: 940px; text-align: left; background: #1f3462; border: 2px solid var(--card-line); border-radius: 22px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); transform-origin: top center; }
+  .mail-head { display: flex; gap: 22px; align-items: center; padding: 26px 34px; background: rgba(255, 255, 255, 0.04); border-bottom: 2px solid var(--card-line); }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--blue); display: grid; place-items: center; font-weight: 700; font-size: 30px; color: var(--blue-soft); flex: none; }
+  .from { font-weight: 600; font-size: 32px; line-height: 1.2; }
+  .mail-body { padding: 30px 34px 36px; display: grid; gap: 22px; justify-items: start; }
+  .subject { font-weight: 700; font-size: 44px; line-height: 1.2; }
+  .text { font-size: 30px; line-height: 1.4; color: #d5def0; }
+  .attach { display: inline-flex; gap: 12px; align-items: center; font-size: 28px; padding: 10px 18px; border: 2px solid var(--card-line); border-radius: 10px; }
+  .btn { background: var(--blue); color: #fff; font-weight: 700; font-size: 30px; padding: 16px 30px; border-radius: 12px; }
+  .link { font-family: "DejaVu Sans Mono", monospace; font-size: 24px; line-height: 1.45; color: #9fb0cf; }
+  .link .bad { color: #ff8a95; }
+  .hl { position: relative; border-radius: 8px; }
+  .hl::after { content: ""; position: absolute; inset: -8px -10px; border: 3px solid var(--red); border-radius: 10px; opacity: var(--hl, 0); box-shadow: 0 0 24px rgba(255, 77, 94, calc(var(--hl, 0) * 0.6)); }
+  .caption { font-size: 40px; color: #dce5f7; margin-top: 50px; }
+
+  .callout { position: absolute; left: 70px; right: 70px; top: 1240px; display: flex; gap: 28px; text-align: left; padding: 36px 40px; border-radius: 22px; background: var(--card); border: 2px solid var(--card-line); }
+  .num { flex: none; width: 66px; height: 66px; border-radius: 50%; background: var(--red); display: grid; place-items: center; font-weight: 700; font-size: 34px; }
+  .callout h3 { font-size: 44px; font-weight: 700; margin-bottom: 10px; }
+  .callout p { font-size: 32px; line-height: 1.4; color: #d5def0; }
+
+  /* Stat / network */
+  .big { font-weight: 800; font-size: 190px; line-height: 1; color: var(--red); margin-top: 40px; letter-spacing: 2px; }
+  .net { width: 640px; height: 640px; margin-top: 40px; }
+  .net line { stroke: rgba(143, 182, 255, 0.25); stroke-width: 4; }
+  .net line.hot { stroke: var(--red); }
+  .net circle.node { fill: #142a52; stroke: rgba(143, 182, 255, 0.4); stroke-width: 4; }
+  .net circle.dot { fill: var(--red); }
+
+  /* List */
+  .items { display: grid; gap: 30px; margin-top: 70px; width: 100%; }
+  .item { display: flex; gap: 28px; align-items: center; text-align: left; padding: 30px 36px; border-radius: 22px; background: var(--card); border: 2px solid var(--card-line); font-size: 36px; line-height: 1.35; }
+  .item .num { background: var(--blue); }
+
+  /* CTA */
+  .cta { justify-content: center; padding-top: 0; }
+  .shield { width: 190px; height: 220px; }
+  .cta .title { font-size: 72px; margin-top: 50px; }
+  .pill { margin-top: 50px; background: var(--blue); color: #0b1530; font-weight: 700; font-size: 38px; padding: 26px 50px; border-radius: 60px; }
+  .cta .logo { width: 110px; height: 110px; margin-top: 80px; }
+  .wordmark { font-size: 64px; letter-spacing: 14px; font-weight: 500; margin-top: 30px; }
+  .tag { font-size: 34px; color: var(--muted); margin-top: 14px; }
+  .rule { width: 260px; height: 2px; background: var(--muted); opacity: 0.5; margin: 40px 0; }
+  .contact { font-size: 44px; display: flex; gap: 22px; align-items: center; margin-top: 18px; }
+  .contact svg { width: 50px; height: 50px; stroke: var(--blue); fill: none; stroke-width: 1.8; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="common.js"></script>
+<script>
+const clamp = (x) => Math.max(0, Math.min(1, x));
+const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const prog = (t, start, dur = 0.5) => ease((t - start) / dur);
+function show(node, p, dy = 40, scale = 0) {
+  node.style.opacity = p;
+  node.style.transform = `translateY(${(1 - p) * dy}px) scale(${1 - (1 - p) * scale})`;
+}
+
+const SHIELD = '<svg class="shield" viewBox="0 0 100 116"><path d="M50 4 94 26v38c0 22-20 40-44 48C26 104 6 86 6 64V26z" fill="rgba(68,139,255,0.18)" stroke="#448bff" stroke-width="4"/><path d="m30 60 14 14 28-30" fill="none" stroke="#8fb6ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_MAIL = '<svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>';
+const ICON_PHONE = '<svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18.5h4"/></svg>';
+const ICON_FILE = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/></svg>';
+
+// Each scene type: build(data) -> { node, duration, update(localTime) }
+const SCENES = {
+  hook(d) {
+    const node = el("div", "scene hook");
+    const badge = d.badge ? el("div", "badge", "⚠ " + rich(d.badge)) : null;
+    const title = el("div", "title", rich(d.title));
+    const sub = d.subtitle ? el("div", "subtitle", rich(d.subtitle)) : null;
+    [badge, title, sub].forEach((n) => n && node.append(n));
+    return {
+      node, duration: d.duration ?? 3.5,
+      update(t) {
+        badge && show(badge, prog(t, 0.15));
+        show(title, prog(t, 0.45, 0.6), 30, 0.05);
+        sub && show(sub, prog(t, 1.3));
+      },
+    };
+  },
+
+  email(d) {
+    const node = el("div", "scene");
+    const hlKeys = new Set((d.callouts || []).flatMap((c) => [].concat(c.highlight || [])));
+    const part = (key, tag, cls, html) => el(tag, cls + (hlKeys.has(key) ? " hl" : ""), html);
+    const mail = el("div", "mail");
+    const head = el("div", "mail-head");
+    head.append(el("div", "avatar", (d.from || "?").trim()[0]));
+    const who = el("div");
+    who.append(el("div", "from", rich(d.from)));
+    who.append(part("address", "div", "text", rich(d.address)));
+    head.append(who);
+    const body = el("div", "mail-body");
+    const fields = {
+      subject: part("subject", "div", "subject", rich(d.subject)),
+      body: part("body", "div", "text", rich(d.body)),
+      attachment: d.attachment ? part("attachment", "div", "attach", ICON_FILE + rich(d.attachment)) : null,
+      button: d.button ? part("button", "div", "btn", rich(d.button)) : null,
+      link: d.link ? part("link", "div", "link", rich(d.link).replace(/\[(.+?)\]/g, '<span class="bad">$1</span>')) : null,
+    };
+    Object.values(fields).forEach((n) => n && body.append(n));
+    fields.address = who.lastChild;
+    mail.append(head, body);
+    const caption = d.caption ? el("div", "caption", rich(d.caption)) : null;
+    node.append(mail);
+    caption && node.append(caption);
+
+    const intro = d.intro ?? 3;
+    const step = d.calloutDuration ?? 3.4;
+    const callouts = (d.callouts || []).map((c, i) => {
+      const box = el("div", "callout", `<div class="num">${i + 1}</div><div><h3>${rich(c.title)}</h3><p>${rich(c.text)}</p></div>`);
+      node.append(box);
+      return { box, keys: [].concat(c.highlight || []), start: intro + i * step };
+    });
+    return {
+      node, duration: d.duration ?? intro + callouts.length * step + 0.4,
+      update(t) {
+        show(mail, prog(t, 0.1, 0.6), 60, 0.04);
+        const shrink = callouts.length ? prog(t, intro - 0.4, 0.6) : 0;
+        mail.style.transform += ` translateY(${shrink * -60}px) scale(${1 - shrink * 0.12})`;
+        caption && (caption.style.opacity = prog(t, 1.2) * (1 - shrink));
+        Object.values(fields).forEach((f) => f && f.style.setProperty("--hl", 0));
+        callouts.forEach((c, i) => {
+          const end = i === callouts.length - 1 ? Infinity : c.start + step;
+          const p = prog(t, c.start, 0.45) * (1 - prog(t, end - 0.3, 0.3));
+          show(c.box, p, 50);
+          const pulse = 0.75 + 0.25 * Math.sin((t - c.start) * 6);
+          c.keys.forEach((k) => fields[k]?.style.setProperty("--hl", p * pulse));
+        });
+      },
+    };
+  },
+
+  stat(d) {
+    const node = el("div", "scene");
+    const big = el("div", "big", rich(d.big));
+    const n = d.nodes ?? 6, R = 250, C = 320;
+    const pts = Array.from({ length: n }, (_, i) => {
+      const a = -Math.PI / 2 + (i * 2 * Math.PI) / n;
+      return [C + R * Math.cos(a), C + R * Math.sin(a)];
+    });
+    const svg = `<svg class="net" viewBox="0 0 640 640">
+      ${pts.map(([x, y]) => `<line x1="${C}" y1="${C}" x2="${x}" y2="${y}"/><line class="hot" x1="${C}" y1="${C}" x2="${x}" y2="${y}" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`).join("")}
+      <circle class="node" cx="${C}" cy="${C}" r="40"/><circle class="dot" cx="${C}" cy="${C}" r="14"/>
+      ${pts.map(([x, y]) => `<circle class="node" cx="${x}" cy="${y}" r="32"/><circle class="dot outer" cx="${x}" cy="${y}" r="12"/>`).join("")}
+    </svg>`;
+    const net = el("div", null, svg);
+    const caption = el("div", "subtitle", rich(d.caption));
+    node.append(big, net, caption);
+    const hot = net.querySelectorAll("line.hot"), dots = net.querySelectorAll("circle.dot.outer");
+    const centre = net.querySelectorAll("circle.dot")[0];
+    return {
+      node, duration: d.duration ?? 5,
+      update(t) {
+        show(big, prog(t, 0.1, 0.5), 0, 0.3);
+        show(net, prog(t, 0.4));
+        centre.style.opacity = prog(t, 0.9, 0.3);
+        hot.forEach((l, i) => {
+          const p = prog(t, 1.1 + i * 0.25, 0.5);
+          l.style.strokeDashoffset = 1 - p;
+          dots[i].style.opacity = prog(t, 1.5 + i * 0.25, 0.2);
+        });
+        show(caption, prog(t, 1.3 + n * 0.25));
+      },
+    };
+  },
+
+  list(d) {
+    const node = el("div", "scene");
+    const title = el("div", "title", rich(d.title));
+    const items = el("div", "items");
+    const rows = (d.items || []).map((txt, i) => {
+      const r = el("div", "item", `<div class="num">${i + 1}</div><div>${rich(txt)}</div>`);
+      items.append(r);
+      return r;
+    });
+    node.append(title, items);
+    const step = d.itemDuration ?? 1.6;
+    return {
+      node, duration: d.duration ?? 1.4 + rows.length * step + 1.2,
+      update(t) {
+        show(title, prog(t, 0.15));
+        rows.forEach((r, i) => {
+          const p = prog(t, 1 + i * step);
+          r.style.opacity = p;
+          r.style.transform = `translateX(${(1 - p) * -80}px)`;
+        });
+      },
+    };
+  },
+
+  text(d) {
+    const node = el("div", "scene");
+    node.style.justifyContent = "center";
+    node.style.paddingTop = "0";
+    const title = el("div", "title", rich(d.title));
+    title.style.fontSize = (d.size ?? 80) + "px";
+    const sub = d.subtitle ? el("div", "subtitle", rich(d.subtitle)) : null;
+    node.append(title);
+    sub && node.append(sub);
+    return {
+      node, duration: d.duration ?? 3,
+      update(t) {
+        show(title, prog(t, 0.15, 0.6), 30, 0.05);
+        sub && show(sub, prog(t, 0.9));
+      },
+    };
+  },
+
+  cta(d) {
+    const node = el("div", "scene cta");
+    const parts = [
+      el("div", null, SHIELD),
+      el("div", "title", rich(d.title)),
+      d.button ? el("div", "pill", rich(d.button)) : null,
+      el("div", null, LOGO),
+      el("div", "wordmark", BRAND.name),
+      el("div", "tag", rich(d.tagline ?? BRAND.tagline)),
+      el("div", "rule"),
+      el("div", "contact", ICON_MAIL + (d.email ?? BRAND.email)),
+      el("div", "contact", ICON_PHONE + (d.phone ?? BRAND.phone)),
+    ].filter(Boolean);
+    node.append(...parts);
+    return {
+      node, duration: d.duration ?? 5, brandbar: false,
+      update(t) { parts.forEach((p, i) => show(p, prog(t, 0.1 + i * 0.18), 30)); },
+    };
+  },
+};
+
+const FADE = 0.35;
+let timeline = [], total = 0, brandbar;
+
+function seek(t) {
+  for (const s of timeline) {
+    const local = t - s.start;
+    const active = local >= 0 && local < s.duration;
+    s.node.style.display = active ? "" : "none";
+    if (!active) continue;
+    s.update(local);
+    s.node.style.opacity = Math.min(prog(local, 0, FADE), 1 - prog(local, s.duration - FADE, FADE));
+    brandbar.style.opacity = s.brandbar === false ? 1 - prog(local, 0, FADE) : 1;
+  }
+}
+
+loadData().then((d) => {
+  const canvas = el("div", "canvas");
+  brandbar = el("div", "brandbar", LOGO + BRAND.handle);
+  canvas.append(brandbar);
+  for (const s of d.scenes) {
+    if (!SCENES[s.type]) throw new Error("Unknown scene type: " + s.type);
+    const scene = SCENES[s.type](s);
+    scene.start = total;
+    total += scene.duration;
+    canvas.append(scene.node);
+    timeline.push(scene);
+  }
+  document.getElementById("root").append(canvas);
+  window.TOTAL = total;
+  window.seek = seek;
+  seek(0);
+  return document.fonts.ready;
+}).then(() => {
+  window.READY = true;
+  if (window.RENDER) return;
+  // Browser preview: play in real time, click to restart
+  let t0 = performance.now();
+  document.body.onclick = () => (t0 = performance.now());
+  const loop = (now) => { seek(((now - t0) / 1000) % total); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+});
+</script>
+</body>
+</html>

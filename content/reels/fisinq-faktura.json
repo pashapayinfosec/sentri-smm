@@ -1,0 +1,36 @@
+{
+  "music": "",
+  "scenes": [
+    {
+      "type": "hook",
+      "badge": "Mühasibatlıq üçün",
+      "title": "Mühasibiniz bu məktubu\naçsa, şirkət\n**nə itirər?**"
+    },
+    {
+      "type": "email",
+      "from": "Ödəniş Xidməti",
+      "address": "faktura@odenis-az.co",
+      "subject": "Faktura #4471 —\nödəniş gecikir",
+      "body": "24 saat ərzində ödənilməsə, hesabınız\nbloklanacaq. Faktura əlavədədir.",
+      "attachment": "Faktura_4471.zip",
+      "button": "Fakturaya bax",
+      "link": "http://odenis-az.co.\n[login-verify.ru/f4471]",
+      "caption": "Normal görünür, elə deyil?",
+      "callouts": [
+        { "title": "Göndərənin domeni", "text": "Real şirkət .az istifadə edir —\nburada isə .co yazılıb.", "highlight": "address" },
+        { "title": "Təcili təhdid", "text": "“24 saat”, “bloklanacaq” —\npanika yaradır, düşünməyə qoymur.", "highlight": "body" },
+        { "title": "Link və .zip faylı", "text": "Ünvan tam başqa saytdır,\n.zip əlavəsini heç vaxt açmayın.", "highlight": ["attachment", "link"] }
+      ]
+    },
+    {
+      "type": "stat",
+      "big": "1 KLİK",
+      "caption": "Bir klik kifayətdir ki, virus\n__bütün ofisə yayılsın.__"
+    },
+    {
+      "type": "cta",
+      "title": "Komandanız fişinq\ntestindən keçə bilər?",
+      "button": "Ödənişsiz test üçün müraciət edə bilərsiniz"
+    }
+  ]
+}
