@@ -51,6 +51,10 @@ Every scene accepts `duration` (seconds) if you want to override the default tim
 
 **Music:** set `"music": "assets/audio/track.mp3"` and it is mixed in with a fade-out. For better reach, leave it empty and add a trending sound in the Instagram app when you upload.
 
+## Wording rules
+
+- Never write **"pulsuz"**, always write **"ödənişsiz"** (e.g. "Ödənişsiz konsultasiya üçün yazın").
+
 ## Preview while editing
 
 ```bash
