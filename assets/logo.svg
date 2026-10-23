@@ -1,6 +1,7 @@
-<!-- Approximation of the sentri.az mark. Replace with the original logo file if you have it (keep the name logo.svg). -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-linecap="round">
-  <path d="M30 18 A38 38 0 0 0 22 78" stroke-width="7"/>
-  <path d="M40 88 A38 38 0 0 0 82 28" stroke-width="7"/>
-  <path d="M62 34 C58 26 40 25 38 35 C36 46 64 45 63 60 C62 72 42 73 36 64" stroke-width="7.5"/>
+<!-- sentri.az mark, traced from assets/logo-original.webp -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="536 536 860 860" fill="none" stroke="#ffffff" stroke-width="68" stroke-linecap="round">
+  <path d="M1137.5 669 A198 198 0 1 0 966 966"/>
+  <path d="M966 768 A198 198 0 1 1 794.5 1065"/>
+  <path d="M1308.9 768 A396 396 0 0 1 966 1362"/>
+  <path d="M623.1 768 A396 396 0 0 0 706.2 1264.9"/>
 </svg>

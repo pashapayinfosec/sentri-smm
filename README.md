@@ -65,7 +65,7 @@ It prints a link for each content file. Open it in your browser, edit the JSON, 
 
 ## Logo
 
-`assets/logo.svg` is a hand-drawn approximation of the sentri.az mark. Replace it with your original logo file (keep the name `logo.svg`, white on transparent) and all templates will use it.
+`assets/logo.svg` is the official sentri.az mark, traced as a vector from `assets/logo-original.webp`. All templates use it.
 
 ## Weekly workflow (about 15 minutes per reel)
 
