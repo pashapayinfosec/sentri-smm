@@ -12,14 +12,14 @@
   .brandbar { position: absolute; top: 140px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 14px; font-size: 30px; color: var(--muted); z-index: 5; }
   .brandbar .logo { width: 46px; height: 46px; opacity: 0.9; }
 
-  .badge { display: inline-flex; align-items: center; gap: 12px; padding: 12px 28px; border-radius: 40px; background: rgba(245, 165, 36, 0.16); border: 2px solid rgba(245, 165, 36, 0.55); color: var(--orange); font-weight: 700; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; margin-top: 60px; }
+  .badge { display: inline-flex; align-items: center; gap: 12px; padding: 12px 28px; border-radius: 40px; background: rgba(127, 211, 255, 0.14); border: 2px solid rgba(127, 211, 255, 0.55); color: var(--accent); font-weight: 700; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; margin-top: 60px; }
   .title { font-weight: 700; font-size: 66px; line-height: 1.22; margin-top: 56px; }
   .subtitle { font-size: 38px; line-height: 1.45; color: #dce5f7; margin-top: 40px; }
   .hook { justify-content: flex-start; padding-top: 440px; }
   .hook .title { font-size: 64px; }
 
   /* Email mock */
-  .mail { width: 940px; text-align: left; background: #27407a; border: 2px solid var(--card-line); border-radius: 22px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); transform-origin: top center; }
+  .mail { width: 940px; text-align: left; background: #0b2f86; border: 2px solid var(--card-line); border-radius: 22px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); transform-origin: top center; }
   .mail-head { display: flex; gap: 22px; align-items: center; padding: 26px 34px; background: rgba(255, 255, 255, 0.04); border-bottom: 2px solid var(--card-line); }
   .avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--blue); display: grid; place-items: center; font-weight: 700; font-size: 30px; color: var(--blue-soft); flex: none; }
   .from { font-weight: 600; font-size: 32px; line-height: 1.2; }
@@ -44,30 +44,30 @@
   .net { width: 640px; height: 640px; margin-top: 40px; }
   .net line { stroke: rgba(143, 182, 255, 0.25); stroke-width: 4; }
   .net line.hot { stroke: var(--red); }
-  .net circle.node { fill: #142a52; stroke: rgba(143, 182, 255, 0.4); stroke-width: 4; }
+  .net circle.node { fill: #0b2f86; stroke: rgba(255, 255, 255, 0.35); stroke-width: 4; }
   .net circle.dot { fill: var(--red); }
 
   /* List */
   .items { display: grid; gap: 30px; margin-top: 70px; width: 100%; }
   .item { display: flex; gap: 28px; align-items: center; text-align: left; padding: 30px 36px; border-radius: 22px; background: var(--card); border: 2px solid var(--card-line); font-size: 36px; line-height: 1.35; }
-  .item .num { background: var(--blue); }
+  .item .num { background: var(--accent); color: var(--bg); }
 
   /* Package (pricing card) */
   .rings { position: absolute; top: 210px; right: -40px; width: 420px; height: 420px; }
-  .rings circle { fill: none; stroke: var(--blue); stroke-width: 10; opacity: 0.55; }
+  .rings circle { fill: none; stroke: var(--white); stroke-width: 10; opacity: 0.3; }
   .pkg-head { font-size: 40px; color: var(--muted); margin-top: 40px; }
-  .pkg { position: relative; width: 900px; margin-top: 50px; text-align: left; padding: 60px 60px 70px; border-radius: 36px; background: linear-gradient(150deg, #2a5fd6 0%, #1a3a86 55%, #142a5e 100%); border: 2px solid rgba(143, 182, 255, 0.35); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.45); }
-  .pkg.featured { background: linear-gradient(150deg, #3b4fd8 0%, #2a2f8f 55%, #1b1f5e 100%); border-color: rgba(245, 165, 36, 0.6); }
-  .pkg h2 { font-size: 76px; font-weight: 800; color: var(--orange); line-height: 1.05; }
+  .pkg { position: relative; width: 900px; margin-top: 50px; text-align: left; padding: 60px 60px 70px; border-radius: 36px; background: linear-gradient(150deg, #1d74e8 0%, #0a3aa7 55%, #05206b 100%); border: 2px solid rgba(255, 255, 255, 0.25); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.45); }
+  .pkg.featured { background: linear-gradient(150deg, #2a86ff 0%, #0f47c0 55%, #05206b 100%); border-color: rgba(127, 211, 255, 0.7); }
+  .pkg h2 { font-size: 76px; font-weight: 800; color: var(--accent); line-height: 1.05; }
   .pkg .what { font-size: 38px; margin-top: 10px; color: #e6edfb; }
   .pkg .price { font-size: 110px; font-weight: 800; margin-top: 26px; line-height: 1; }
   .pkg .price small { font-size: 44px; font-weight: 600; color: var(--muted); margin-left: 8px; }
   .pkg ul { list-style: none; display: grid; gap: 22px; margin-top: 44px; }
   .pkg li { display: flex; gap: 22px; align-items: center; font-size: 38px; }
   .tick { flex: none; width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.92); display: grid; place-items: center; }
-  .tick svg { width: 30px; height: 30px; stroke: #1a3a86; fill: none; stroke-width: 3.5; }
-  .ribbon { position: absolute; right: 40px; top: -28px; background: var(--red); color: #fff; font-weight: 800; font-size: 30px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 30px; border-radius: 10px; box-shadow: 0 12px 30px rgba(255, 77, 94, 0.45); }
-  .pkg.featured .ribbon { background: var(--orange); color: #1b1f5e; box-shadow: 0 12px 30px rgba(245, 165, 36, 0.45); }
+  .tick svg { width: 30px; height: 30px; stroke: #0a3aa7; fill: none; stroke-width: 3.5; }
+  .ribbon { position: absolute; right: 40px; top: -28px; background: var(--white); color: var(--bg-2); font-weight: 800; font-size: 30px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 30px; border-radius: 10px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
+  .pkg.featured .ribbon { background: var(--accent); color: var(--bg); box-shadow: 0 12px 30px rgba(127, 211, 255, 0.4); }
   .pkg-note { font-size: 30px; color: var(--muted); margin-top: 40px; }
 
   /* Browser mock: a website building itself */
@@ -81,15 +81,15 @@
   .caret { display: inline-block; width: 3px; height: 34px; background: #1b2a4a; vertical-align: middle; }
   .page { padding: 34px; display: grid; gap: 26px; height: 760px; align-content: start; }
   .nav { display: flex; justify-content: space-between; align-items: center; }
-  .nav b { width: 170px; height: 34px; border-radius: 8px; background: #1a3a86; }
+  .nav b { width: 170px; height: 34px; border-radius: 8px; background: #0a3aa7; }
   .nav span { display: flex; gap: 18px; }
   .nav span i { width: 90px; height: 18px; border-radius: 9px; background: #c3cee6; }
-  .heroblock { border-radius: 20px; padding: 46px 40px; background: linear-gradient(135deg, #2a5fd6, #142a5e); display: grid; gap: 20px; }
+  .heroblock { border-radius: 20px; padding: 46px 40px; background: linear-gradient(120deg, #05206b, #0a3aa7 50%, #1668dc); display: grid; gap: 20px; }
   .heroblock i { height: 30px; border-radius: 10px; background: rgba(255, 255, 255, 0.9); }
   .heroblock i:nth-child(2) { width: 70%; background: rgba(255, 255, 255, 0.6); }
-  .heroblock em { width: 230px; height: 64px; border-radius: 32px; background: var(--orange); }
+  .heroblock em { width: 230px; height: 64px; border-radius: 32px; background: var(--accent); }
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  .cards i { height: 220px; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(26, 58, 134, 0.15); border-top: 10px solid var(--blue); }
+  .cards i { height: 220px; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(10, 58, 167, 0.15); border-top: 10px solid var(--bg-3); }
   .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-top: 56px; }
   .badges span { font-size: 32px; padding: 14px 28px; border-radius: 40px; background: var(--card); border: 2px solid var(--card-line); }
 
@@ -97,13 +97,13 @@
   .cta { justify-content: center; padding-top: 0; }
   .shield { width: 190px; height: 220px; }
   .cta .title { font-size: 72px; margin-top: 50px; }
-  .pill { margin-top: 50px; background: var(--blue); color: #0b1530; font-weight: 700; font-size: 38px; padding: 26px 50px; border-radius: 60px; }
+  .pill { margin-top: 50px; background: var(--white); color: var(--bg-2); font-weight: 700; font-size: 38px; padding: 26px 50px; border-radius: 60px; }
   .cta .logo { width: 110px; height: 110px; margin-top: 80px; }
   .wordmark { font-size: 64px; letter-spacing: 14px; font-weight: 500; margin-top: 30px; }
   .tag { font-size: 34px; color: var(--muted); margin-top: 14px; }
   .rule { width: 260px; height: 2px; background: var(--muted); opacity: 0.5; margin: 40px 0; }
   .contact { font-size: 44px; display: flex; gap: 22px; align-items: center; margin-top: 18px; }
-  .contact svg { width: 50px; height: 50px; stroke: var(--blue); fill: none; stroke-width: 1.8; }
+  .contact svg { width: 50px; height: 50px; stroke: var(--white); fill: none; stroke-width: 1.8; }
 </style>
 </head>
 <body>
@@ -118,8 +118,8 @@ function show(node, p, dy = 40, scale = 0) {
   node.style.transform = `translateY(${(1 - p) * dy}px) scale(${1 - (1 - p) * scale})`;
 }
 
-const SHIELD = '<svg class="shield" viewBox="0 0 100 116"><path d="M50 4 94 26v38c0 22-20 40-44 48C26 104 6 86 6 64V26z" fill="rgba(68,139,255,0.18)" stroke="#448bff" stroke-width="4"/><path d="m30 60 14 14 28-30" fill="none" stroke="#8fb6ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const GLOBE = '<svg class="shield" viewBox="0 0 100 116"><circle cx="50" cy="58" r="44" fill="rgba(68,139,255,0.18)" stroke="#448bff" stroke-width="4"/><ellipse cx="50" cy="58" rx="18" ry="44" fill="none" stroke="#8fb6ff" stroke-width="4"/><path d="M6 58h88M12 36h76M12 80h76" stroke="#8fb6ff" stroke-width="4" fill="none"/></svg>';
+const SHIELD = '<svg class="shield" viewBox="0 0 100 116"><path d="M50 4 94 26v38c0 22-20 40-44 48C26 104 6 86 6 64V26z" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-width="4"/><path d="m30 60 14 14 28-30" fill="none" stroke="#7fd3ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const GLOBE = '<svg class="shield" viewBox="0 0 100 116"><circle cx="50" cy="58" r="44" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-width="4"/><ellipse cx="50" cy="58" rx="18" ry="44" fill="none" stroke="#7fd3ff" stroke-width="4"/><path d="M6 58h88M12 36h76M12 80h76" stroke="#7fd3ff" stroke-width="4" fill="none"/></svg>';
 const ICON_MAIL = '<svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>';
 const ICON_PHONE = '<svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18.5h4"/></svg>';
 const ICON_FILE = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/></svg>';

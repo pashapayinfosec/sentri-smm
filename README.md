@@ -51,6 +51,10 @@ Every scene accepts `duration` (seconds) if you want to override the default tim
 
 **Music:** set `"music": "assets/audio/track.mp3"` and it is mixed in with a fade-out. For better reach, leave it empty and add a trending sound in the Instagram app when you upload.
 
+## Colour palette (use for everything)
+
+Diagonal gradient from deep navy-blue `#05206b` (top-left) through royal blue `#0a3aa7` to bright blue `#1668dc` (bottom-right), white text, light sky-blue accent `#7fd3ff`. Red `#ff5a6a` only for danger/warning elements. All tokens live in `templates/brand.css`.
+
 ## Wording rules
 
 - Never write **"pulsuz"**, always write **"ödənişsiz"** (e.g. "Ödənişsiz konsultasiya üçün yazın").
