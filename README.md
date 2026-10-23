@@ -51,9 +51,19 @@ Every scene accepts `duration` (seconds) if you want to override the default tim
 
 **Music:** set `"music": "assets/audio/track.mp3"` and it is mixed in with a fade-out. For better reach, leave it empty and add a trending sound in the Instagram app when you upload.
 
+## Live-action commercial (AI video clips + Sentri branding)
+
+Photorealistic footage must come from an AI video tool (Veo, Kling, Sora, Runway…) or a real shoot. This repo does the editing part.
+
+1. Open `content/commercials/it-destek.json`. For each shot, generate a clip with `master_prompt` + that shot's `prompt`.
+2. Save each clip at the shot's `clip` path (e.g. `assets/clips/1-problem.mp4`). Any aspect ratio works; it is cropped to 9:16 and trimmed or held to fit the slot.
+3. Run `node scripts/commercial.js content/commercials/it-destek.json` -> `out/it-destek.mp4` (30s, 1080×1920).
+
+Shots without a clip yet show a storyboard frame, so the full timing can be reviewed before any footage exists. Azerbaijani dialogue subtitles, the logo and the end card are added automatically; set `music` for a soundtrack. Dialogue audio (voice actors or voiceover) is recorded separately.
+
 ## Colour palette (use for everything)
 
-Diagonal gradient from deep navy-blue `#05206b` (top-left) through royal blue `#0a3aa7` to bright blue `#1668dc` (bottom-right), white text, light sky-blue accent `#7fd3ff`. Red `#ff5a6a` only for danger/warning elements. All tokens live in `templates/brand.css`.
+Diagonal gradient from deep navy-blue `#05206b` (top-left) through royal blue `#0a3aa7` to bright blue `#1668dc` (bottom-right), white text, warm yellow accent `#ffd166` for highlighted words (`**text**`). Red `#ff5a6a` only for danger/warning elements. All tokens live in `templates/brand.css`.
 
 ## Wording rules
 

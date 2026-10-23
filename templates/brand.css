@@ -6,13 +6,13 @@
 @font-face { font-family: "Poppins"; font-weight: 800; src: url("../assets/fonts/Poppins-ExtraBold.ttf"); }
 
 :root {
-  /* Palette from the "domen seçməyin 5 qızıl qaydası" post: navy -> royal -> bright blue */
+  /* Palette from the sentri.az domain posts: navy -> royal -> bright blue, yellow accent */
   --bg: #05206b;
   --bg-2: #0a3aa7;
   --bg-3: #1668dc;
   --blue: #3d8bff;
   --blue-soft: #9cc8ff;
-  --accent: #7fd3ff;
+  --accent: #ffd166;
   --red: #ff5a6a;
   --white: #ffffff;
   --muted: #c2cff0;
@@ -48,6 +48,19 @@ body {
   pointer-events: none;
 }
 .canvas > * { position: relative; }
+/* Two faint arcs sweeping up from the bottom-left, as in the reference posts */
+.canvas::after {
+  content: "";
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  top: 60%;
+  height: 120%;
+  border-radius: 50%;
+  border-top: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 -110px 0 -60px rgba(255, 255, 255, 0.0), inset 0 110px 0 -108px rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+}
 
 /* **text** in content files; the class name is kept for the markup */
 .accent-orange { color: var(--accent); }

@@ -1,0 +1,68 @@
+{
+  "_qeyd": "Hər səhnə üçün AI video aləti (Veo, Kling, Sora, Runway və s.) ilə klip yaradın: master_prompt + səhnənin prompt-u. Klipi 'clip' yolunda saxlayın, sonra yenidən render edin. Klip yoxdursa, yerində storyboard kadrı göstərilir.",
+  "music": "",
+  "master_prompt": "Create a photorealistic live-action commercial for Sentri, an IT support company. The setting is a believable modern small-business office in Baku. Tone: understated workplace comedy followed by calm professionalism. Natural acting, subtle facial expressions, realistic office clothing, soft daylight, restrained camera movement, authentic commercial footage. Maintain the same office, actors, wardrobe and equipment across all shots. Use medium shots for interactions and close-ups for reactions and devices. The IT specialist wears a plain navy polo and carries a laptop. The story: an internet outage makes several office employees attempt awkward improvised troubleshooting. One employee contacts professional IT support. After an implied passage of time, a Sentri technician diagnoses the issue. The employees return to their own work. Avoid exaggerated acting, futuristic holograms, robots, glowing code, magical repairs, distorted hands and floating interface graphics. Do not generate logos, captions or readable screen text. Leave branding, Azerbaijani dialogue and the final title card for editing. Vertical 9:16 composition.",
+  "shots": [
+    {
+      "title": "Problem",
+      "start": 0, "end": 4,
+      "action": "Müasir ofis. Əməkdaş noutbukda işləyir, səhifə yüklənmir. Yanındakı həmkarına baxır.",
+      "line": "Səndə də internet yoxdur?",
+      "clip": "assets/clips/1-problem.mp4",
+      "prompt": "An office employee looks at a laptop that is failing to load a page, pauses, then turns toward a colleague with a mildly concerned expression. Slow camera push-in. No speaking."
+    },
+    {
+      "title": "Router",
+      "start": 4, "end": 8,
+      "action": "İkinci əməkdaş routeri havaya qaldırıb müxtəlif istiqamətlərə çevirir. Üzü ciddidir.",
+      "line": "Bəlkə burada yaxşı tutsun…",
+      "clip": "assets/clips/2-router.mp4",
+      "prompt": "A serious-looking office worker holds a small wireless router slightly above shoulder height and slowly turns it toward the window, as if searching for reception. Subtle visual comedy. Medium shot. No speaking."
+    },
+    {
+      "title": "Kabellər",
+      "start": 8, "end": 12,
+      "action": "Başqa əməkdaş masanın altında kabellərə baxır. Üçüncüsü arxadan məsləhət verir.",
+      "line": "Söndür, yandır. Mən həmişə elə edirəm.",
+      "clip": "assets/clips/3-kabeller.mp4",
+      "prompt": "An employee crouches beside a desk, looking with confusion at several network cables. A colleague stands nearby giving an overly confident small hand gesture. Realistic body movement. No unplugging or speaking."
+    },
+    {
+      "title": "Rəhbər",
+      "start": 12, "end": 16,
+      "action": "Rəhbər əlində sənədlərlə dayanır. Hamı ona baxır. Qısa sükut.",
+      "line": "Bizim işimiz nə vaxt davam edəcək?",
+      "clip": "assets/clips/4-rehber.mp4",
+      "prompt": "An office manager holding a folder stops in the doorway and looks at the distracted team. The employees pause and look back. Hold a brief awkward silence. Static medium-wide shot."
+    },
+    {
+      "title": "Zəng",
+      "start": 16, "end": 19,
+      "action": "İlk əməkdaş telefonunu götürüb dəstək üçün zəng edir.",
+      "line": "Sentri? İT dəstəyə ehtiyacımız var.",
+      "clip": "assets/clips/5-zeng.mp4",
+      "prompt": "Close-up of the first employee picking up a smartphone and bringing it to their ear. Their expression becomes calm and purposeful. Keep the phone screen out of view."
+    },
+    {
+      "title": "Dəstək",
+      "start": 19, "end": 25,
+      "action": "Zaman keçidindən sonra mütəxəssis ofisdədir. Noutbukla yoxlama aparır, şəbəkə bağlantısını nəzərdən keçirir. Sonra əməkdaşın işləyən ekranına keçid. Musiqi gərginlikdən rahat ritmə keçir.",
+      "line": "",
+      "clip": "assets/clips/6-destek.mp4",
+      "prompt": "A professional IT technician in a plain navy polo sits beside the network equipment and methodically checks diagnostics on a laptop. Calm, practical movements. No magical effects. Screen content out of focus."
+    },
+    {
+      "title": "İş davam edir",
+      "start": 25, "end": 28,
+      "action": "Hamı işinə qayıdıb. Routeri tutan əməkdaş onu ehtiyatla yerinə qoyur, öz masasına gedir.",
+      "line": "Hər kəs öz işini görsün.",
+      "voiceover": true,
+      "clip": "assets/clips/7-is-davam-edir.mp4",
+      "prompt": "The same office employees are working comfortably again. In the foreground, the worker who held the router carefully places it back on its shelf, then returns to their desk. End with a gentle camera pullback."
+    }
+  ],
+  "endcard": {
+    "start": 28, "end": 30,
+    "line": "İT dəstəyiniz — **Sentri**."
+  }
+}

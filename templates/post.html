@@ -21,12 +21,12 @@
 
   .eyebrow { font-weight: 600; font-size: 26px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue-soft); margin-bottom: 18px; }
   h1 { font-weight: 800; font-size: 68px; line-height: 1.12; text-transform: uppercase; letter-spacing: 1px; }
-  h1 .accent-orange { text-transform: none; font-weight: 600; letter-spacing: 0; }
+  h1 .accent-orange { text-transform: none; letter-spacing: 0; }
   h1.normal-case { text-transform: none; }
 
   ul { list-style: none; margin-top: 54px; display: grid; gap: 22px; }
   li { font-size: 36px; line-height: 1.35; display: flex; gap: 18px; color: #e6edfb; }
-  li::before { content: "✧"; color: var(--white); }
+  li::before { content: "✦"; color: var(--white); }
 
   .spacer { flex: 1; }
 
@@ -34,9 +34,10 @@
   .note { font-size: 30px; line-height: 1.4; max-width: 560px; }
   .note b { font-weight: 700; }
   .note::after { content: ""; display: block; width: 240px; height: 5px; border-radius: 3px; margin-top: 22px; background: linear-gradient(90deg, var(--white), rgba(255, 255, 255, 0)); }
-  .contacts { font-size: 26px; display: grid; gap: 14px; text-align: right; white-space: nowrap; }
+  .contacts { font-size: 30px; display: grid; gap: 16px; text-align: right; white-space: nowrap; color: var(--muted); }
+  .contacts .phone { font-size: 48px; font-weight: 500; color: var(--white); }
   .contacts span { display: inline-flex; align-items: center; gap: 12px; justify-content: flex-end; }
-  .contacts svg { width: 26px; height: 26px; stroke: var(--white); fill: none; stroke-width: 2; }
+  .contacts svg { width: 34px; height: 34px; fill: var(--white); }
 </style>
 </head>
 <body>
@@ -69,7 +70,7 @@ loadData().then((d) => {
   const footer = el("div", "footer");
   footer.append(el("div", "note", rich(d.footer || "").replace(/<span class="accent-orange">(.+?)<\/span>/g, "<b>$1</b>")));
   footer.append(el("div", "contacts",
-    `<span>${ICON_PHONE}${d.phone || BRAND.phone}</span><span>${ICON_MAIL}${d.email || BRAND.email}</span>`));
+    `<span class="phone">${ICON_PHONE}${d.phone || BRAND.phone}</span><span>${d.email || BRAND.email}</span>`));
   c.append(footer);
   document.getElementById("root").append(c);
   return document.fonts.ready;

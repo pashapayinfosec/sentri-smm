@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<title>sentri.az commercial layers</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+  /* One page, three layer types, picked by ?layer=
+     "placeholder" storyboard frame shown until a real clip is added,
+     "subtitle"    transparent overlay (dialogue + logo bug) put on top of a clip,
+     "endcard"     the animated Sentri title card */
+  html, body { background: transparent; }
+  .frame { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+
+  .ph { display: flex; flex-direction: column; justify-content: center; padding: 0 90px; }
+  .ph .num { font-size: 34px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); }
+  .ph h2 { font-size: 84px; font-weight: 800; line-height: 1.1; margin-top: 20px; }
+  .ph .time { font-size: 34px; color: var(--muted); margin-top: 16px; }
+  .ph .desc { margin-top: 60px; padding: 40px 44px; border-radius: 26px; background: var(--card); border: 2px solid var(--card-line); font-size: 34px; line-height: 1.5; color: #e6edfb; }
+  .ph .hint { margin-top: 40px; font-size: 28px; color: var(--muted); }
+  .ph .hint b { color: var(--white); font-weight: 600; }
+
+  .bug { position: absolute; top: 120px; right: 80px; width: 92px; height: 92px; opacity: 0.9; filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.35)); }
+  .sub { position: absolute; left: 70px; right: 70px; bottom: 330px; display: flex; justify-content: center; }
+  .sub span { max-width: 940px; padding: 26px 40px; border-radius: 22px; background: rgba(5, 32, 107, 0.78); border: 2px solid rgba(255, 255, 255, 0.18); font-size: 50px; font-weight: 600; line-height: 1.3; text-align: center; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); }
+  .sub.vo span { font-style: italic; font-weight: 500; background: rgba(5, 32, 107, 0.6); }
+
+  .end { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .end .logo { width: 260px; height: 260px; }
+  .end .word { font-size: 92px; font-weight: 600; letter-spacing: 22px; margin-top: 60px; margin-right: -22px; }
+  .end .line { font-size: 58px; font-weight: 700; margin-top: 50px; }
+  .end .rule { width: 300px; height: 4px; border-radius: 2px; margin: 60px 0 50px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--white), rgba(255, 255, 255, 0)); }
+  .end .phone { font-size: 70px; font-weight: 500; }
+  .end .mail { font-size: 44px; color: var(--muted); margin-top: 18px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="common.js"></script>
+<script>
+const clamp = (x) => Math.max(0, Math.min(1, x));
+const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const prog = (t, start, dur = 0.5) => ease((t - start) / dur);
+
+const LAYER = new URLSearchParams(location.search).get("layer");
+
+loadData().then((d) => {
+  const root = document.getElementById("root");
+  const shot = d.shot || {};
+  let parts = [];
+
+  if (LAYER === "placeholder") {
+    const f = el("div", "frame canvas ph");
+    f.append(
+      el("div", "num", `Səhnə ${shot.index}`),
+      el("h2", null, rich(shot.title)),
+      el("div", "time", `${shot.start}–${shot.end} san.`),
+      el("div", "desc", rich(shot.action)),
+      el("div", "hint", `Real klip əlavə edin: <b>${shot.clip}</b>`),
+    );
+    root.append(f);
+  } else if (LAYER === "subtitle") {
+    const f = el("div", "frame");
+    f.append(el("div", null, LOGO.replace('class="logo"', 'class="bug"')));
+    if (shot.line) {
+      const sub = el("div", "sub" + (shot.voiceover ? " vo" : ""), `<span>${rich(shot.line)}</span>`);
+      f.append(sub);
+    }
+    root.append(f);
+  } else {
+    const f = el("div", "frame canvas end");
+    parts = [
+      el("div", null, LOGO),
+      el("div", "word", BRAND.name),
+      el("div", "line", rich(d.endcard.line)),
+      el("div", "rule"),
+      el("div", "phone", d.endcard.phone ?? BRAND.phone),
+      el("div", "mail", d.endcard.email ?? BRAND.email),
+    ];
+    f.append(...parts);
+    root.append(f);
+  }
+
+  window.seek = (t) => parts.forEach((p, i) => {
+    const q = prog(t, 0.05 + i * 0.12, 0.45);
+    p.style.opacity = q;
+    p.style.transform = `translateY(${(1 - q) * 30}px) scale(${i === 0 ? 0.85 + 0.15 * q : 1})`;
+  });
+  window.seek(0);
+  return document.fonts.ready;
+}).then(() => { window.READY = true; });
+</script>
+</body>
+</html>
