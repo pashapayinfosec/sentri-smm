@@ -43,7 +43,9 @@ A reel is a list of **scenes** played in order. Each scene type:
 | `stat` | Big red number and a "virus spreading" network animation | `big`, `caption` |
 | `list` | Title and numbered tips appearing one by one | `title`, `items` |
 | `text` | A single strong statement | `title`, `subtitle`, `size` |
-| `cta` | Shield, question, button, logo and contacts | `title`, `button` |
+| `package` | Pricing card: price counts up, features tick in, ribbon pops | `heading`, `name`, `what`, `price`, `currency`, `features`, `ribbon`, `featured`, `note` |
+| `browser` | Browser window: URL types itself, then a website builds block by block | `title`, `url`, `badges` |
+| `cta` | Icon, question, button, logo and contacts | `title`, `button`, `icon` (`shield` or `globe`) |
 
 Every scene accepts `duration` (seconds) if you want to override the default timing.
 

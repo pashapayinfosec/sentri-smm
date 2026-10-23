@@ -1,0 +1,49 @@
+{
+  "_qeyd": "Qiymətlər və paket tərkibi NÜMUNƏDİR — paylaşmadan əvvəl real qiymətlərinizlə əvəz edin.",
+  "scenes": [
+    {
+      "type": "hook",
+      "badge": "Biznes sahibləri üçün",
+      "title": "Müştəriləriniz sizi\n**internetdə tapa bilmir?**"
+    },
+    {
+      "type": "text",
+      "title": "Saytı olmayan biznes\n__hər gün müştəri itirir__",
+      "subtitle": "++Həlli bizdədir!++"
+    },
+    {
+      "type": "package",
+      "heading": "Veb-sayt paketləri",
+      "name": "Start Paket",
+      "what": "1 səhifəlik təqdimat saytı",
+      "prefix": "",
+      "price": 299,
+      "currency": "AZN",
+      "features": ["Mobil uyğun dizayn", "Domen + hostinq (1 il)", "SSL sertifikatı", "WhatsApp və əlaqə forması"],
+      "ribbon": "Ən sərfəli"
+    },
+    {
+      "type": "package",
+      "heading": "Veb-sayt paketləri",
+      "name": "Biznes Paket",
+      "what": "5 səhifəlik korporativ sayt",
+      "price": 699,
+      "currency": "AZN",
+      "features": ["Fərdi dizayn", "Google-da görünmə (SEO)", "Admin panel", "Təhlükəsizlik yoxlaması", "Gündəlik backup"],
+      "ribbon": "Ən populyar",
+      "featured": true
+    },
+    {
+      "type": "browser",
+      "title": "Saytınızı **təhlükəsiz** qururuq",
+      "url": "sizinbiznes.az",
+      "badges": ["🔒 SSL", "🛡 Firewall", "💾 Backup", "📱 Mobil"]
+    },
+    {
+      "type": "cta",
+      "icon": "globe",
+      "title": "Biznesinizi\nonlayna çıxaraq!",
+      "button": "Pulsuz konsultasiya üçün yazın"
+    }
+  ]
+}

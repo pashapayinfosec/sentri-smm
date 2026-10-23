@@ -52,6 +52,47 @@
   .item { display: flex; gap: 28px; align-items: center; text-align: left; padding: 30px 36px; border-radius: 22px; background: var(--card); border: 2px solid var(--card-line); font-size: 36px; line-height: 1.35; }
   .item .num { background: var(--blue); }
 
+  /* Package (pricing card) */
+  .rings { position: absolute; top: 210px; right: -40px; width: 420px; height: 420px; }
+  .rings circle { fill: none; stroke: var(--blue); stroke-width: 10; opacity: 0.55; }
+  .pkg-head { font-size: 40px; color: var(--muted); margin-top: 40px; }
+  .pkg { position: relative; width: 900px; margin-top: 50px; text-align: left; padding: 60px 60px 70px; border-radius: 36px; background: linear-gradient(150deg, #2a5fd6 0%, #1a3a86 55%, #142a5e 100%); border: 2px solid rgba(143, 182, 255, 0.35); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.45); }
+  .pkg.featured { background: linear-gradient(150deg, #3b4fd8 0%, #2a2f8f 55%, #1b1f5e 100%); border-color: rgba(245, 165, 36, 0.6); }
+  .pkg h2 { font-size: 76px; font-weight: 800; color: var(--orange); line-height: 1.05; }
+  .pkg .what { font-size: 38px; margin-top: 10px; color: #e6edfb; }
+  .pkg .price { font-size: 110px; font-weight: 800; margin-top: 26px; line-height: 1; }
+  .pkg .price small { font-size: 44px; font-weight: 600; color: var(--muted); margin-left: 8px; }
+  .pkg ul { list-style: none; display: grid; gap: 22px; margin-top: 44px; }
+  .pkg li { display: flex; gap: 22px; align-items: center; font-size: 38px; }
+  .tick { flex: none; width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.92); display: grid; place-items: center; }
+  .tick svg { width: 30px; height: 30px; stroke: #1a3a86; fill: none; stroke-width: 3.5; }
+  .ribbon { position: absolute; right: 40px; top: -28px; background: var(--red); color: #fff; font-weight: 800; font-size: 30px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 30px; border-radius: 10px; box-shadow: 0 12px 30px rgba(255, 77, 94, 0.45); }
+  .pkg.featured .ribbon { background: var(--orange); color: #1b1f5e; box-shadow: 0 12px 30px rgba(245, 165, 36, 0.45); }
+  .pkg-note { font-size: 30px; color: var(--muted); margin-top: 40px; }
+
+  /* Browser mock: a website building itself */
+  .browser { width: 940px; margin-top: 60px; border-radius: 26px; overflow: hidden; background: #f4f7ff; text-align: left; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.45); }
+  .bar { display: flex; align-items: center; gap: 14px; padding: 22px 26px; background: #dde5f5; }
+  .bar i { width: 20px; height: 20px; border-radius: 50%; background: #ff5f57; }
+  .bar i:nth-child(2) { background: #febc2e; }
+  .bar i:nth-child(3) { background: #28c840; }
+  .url { flex: 1; margin-left: 16px; background: #fff; border-radius: 30px; padding: 12px 26px; font-size: 30px; color: #1b2a4a; display: flex; gap: 12px; align-items: center; min-height: 58px; }
+  .url .lock { color: #1f9d55; font-size: 26px; }
+  .caret { display: inline-block; width: 3px; height: 34px; background: #1b2a4a; vertical-align: middle; }
+  .page { padding: 34px; display: grid; gap: 26px; height: 760px; align-content: start; }
+  .nav { display: flex; justify-content: space-between; align-items: center; }
+  .nav b { width: 170px; height: 34px; border-radius: 8px; background: #1a3a86; }
+  .nav span { display: flex; gap: 18px; }
+  .nav span i { width: 90px; height: 18px; border-radius: 9px; background: #c3cee6; }
+  .heroblock { border-radius: 20px; padding: 46px 40px; background: linear-gradient(135deg, #2a5fd6, #142a5e); display: grid; gap: 20px; }
+  .heroblock i { height: 30px; border-radius: 10px; background: rgba(255, 255, 255, 0.9); }
+  .heroblock i:nth-child(2) { width: 70%; background: rgba(255, 255, 255, 0.6); }
+  .heroblock em { width: 230px; height: 64px; border-radius: 32px; background: var(--orange); }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .cards i { height: 220px; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(26, 58, 134, 0.15); border-top: 10px solid var(--blue); }
+  .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-top: 56px; }
+  .badges span { font-size: 32px; padding: 14px 28px; border-radius: 40px; background: var(--card); border: 2px solid var(--card-line); }
+
   /* CTA */
   .cta { justify-content: center; padding-top: 0; }
   .shield { width: 190px; height: 220px; }
@@ -78,6 +119,7 @@ function show(node, p, dy = 40, scale = 0) {
 }
 
 const SHIELD = '<svg class="shield" viewBox="0 0 100 116"><path d="M50 4 94 26v38c0 22-20 40-44 48C26 104 6 86 6 64V26z" fill="rgba(68,139,255,0.18)" stroke="#448bff" stroke-width="4"/><path d="m30 60 14 14 28-30" fill="none" stroke="#8fb6ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const GLOBE = '<svg class="shield" viewBox="0 0 100 116"><circle cx="50" cy="58" r="44" fill="rgba(68,139,255,0.18)" stroke="#448bff" stroke-width="4"/><ellipse cx="50" cy="58" rx="18" ry="44" fill="none" stroke="#8fb6ff" stroke-width="4"/><path d="M6 58h88M12 36h76M12 80h76" stroke="#8fb6ff" stroke-width="4" fill="none"/></svg>';
 const ICON_MAIL = '<svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>';
 const ICON_PHONE = '<svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18.5h4"/></svg>';
 const ICON_FILE = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/></svg>';
@@ -228,10 +270,94 @@ const SCENES = {
     };
   },
 
+  package(d) {
+    const node = el("div", "scene");
+    node.append(el("div", null, '<svg class="rings" viewBox="0 0 420 420"><circle cx="210" cy="210" r="190"/><circle cx="210" cy="210" r="160"/><circle cx="210" cy="210" r="130"/></svg>'));
+    const head = d.heading ? el("div", "pkg-head", rich(d.heading)) : null;
+    const card = el("div", "pkg" + (d.featured ? " featured" : ""));
+    card.append(el("h2", null, rich(d.name)));
+    if (d.what) card.append(el("div", "what", rich(d.what)));
+    const price = el("div", "price");
+    card.append(price);
+    const ul = el("ul");
+    const rows = (d.features || []).map((f) => {
+      const li = el("li", null, `<span class="tick"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><span>${rich(f)}</span>`);
+      ul.append(li);
+      return li;
+    });
+    card.append(ul);
+    const ribbon = d.ribbon ? el("div", "ribbon", rich(d.ribbon)) : null;
+    ribbon && card.append(ribbon);
+    const note = d.note ? el("div", "pkg-note", rich(d.note)) : null;
+    [head, card, note].forEach((n) => n && node.append(n));
+    const rings = node.querySelector(".rings");
+    const step = 0.3;
+    return {
+      node, duration: d.duration ?? 2.6 + rows.length * step + 1,
+      update(t) {
+        head && show(head, prog(t, 0.05));
+        const p = prog(t, 0.1, 0.6);
+        card.style.opacity = p;
+        card.style.transform = `translateX(${(1 - p) * 300}px) rotate(${(1 - p) * 6}deg)`;
+        rings.style.transform = `rotate(${t * 25}deg)`;
+        rings.style.opacity = prog(t, 0.3);
+        // Price counts up to its final value
+        const value = Number(d.price) || 0;
+        const shown = Math.round(value * prog(t, 0.6, 0.9));
+        price.innerHTML = (d.prefix ? `<small>${rich(d.prefix)}</small> ` : "") + shown + `<small>${rich(d.currency ?? "AZN")}</small>`;
+        rows.forEach((r, i) => {
+          const q = prog(t, 1.3 + i * step, 0.35);
+          r.style.opacity = q;
+          r.style.transform = `translateX(${(1 - q) * 40}px)`;
+        });
+        if (ribbon) {
+          const q = prog(t, 1.4 + rows.length * step, 0.35);
+          ribbon.style.opacity = q;
+          ribbon.style.transform = `scale(${0.6 + 0.4 * q}) rotate(-4deg)`;
+        }
+        note && show(note, prog(t, 1.6 + rows.length * step));
+      },
+    };
+  },
+
+  browser(d) {
+    const node = el("div", "scene");
+    const title = el("div", "title", rich(d.title));
+    const win = el("div", "browser");
+    win.innerHTML = `<div class="bar"><i></i><i></i><i></i><div class="url"><span class="lock">🔒</span><span class="typed"></span><span class="caret"></span></div></div>
+      <div class="page">
+        <div class="nav"><b></b><span><i></i><i></i><i></i></span></div>
+        <div class="heroblock"><i></i><i></i><em></em></div>
+        <div class="cards"><i></i><i></i><i></i></div>
+      </div>`;
+    const badges = el("div", "badges");
+    const chips = (d.badges || []).map((b) => {
+      const s = el("span", null, rich(b));
+      badges.append(s);
+      return s;
+    });
+    node.append(title, win, badges);
+    const typed = win.querySelector(".typed"), caret = win.querySelector(".caret");
+    const blocks = [...win.querySelectorAll(".nav, .heroblock, .cards i")];
+    const url = d.url || "sizinbiznes.az";
+    const typeEnd = 0.8 + url.length * 0.07;
+    return {
+      node, duration: d.duration ?? typeEnd + blocks.length * 0.3 + chips.length * 0.3 + 1.6,
+      update(t) {
+        show(title, prog(t, 0.05));
+        show(win, prog(t, 0.2, 0.6), 60, 0.04);
+        typed.textContent = url.slice(0, Math.max(0, Math.floor((t - 0.8) / 0.07)));
+        caret.style.opacity = Math.floor(t * 2.5) % 2 ? 0 : 1;
+        blocks.forEach((b, i) => show(b, prog(t, typeEnd + 0.2 + i * 0.3, 0.4), 30));
+        chips.forEach((c, i) => show(c, prog(t, typeEnd + blocks.length * 0.3 + 0.3 + i * 0.3, 0.4), 20));
+      },
+    };
+  },
+
   cta(d) {
     const node = el("div", "scene cta");
     const parts = [
-      el("div", null, SHIELD),
+      el("div", null, d.icon === "globe" ? GLOBE : SHIELD),
       el("div", "title", rich(d.title)),
       d.button ? el("div", "pill", rich(d.button)) : null,
       el("div", null, LOGO),
