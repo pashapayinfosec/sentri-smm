@@ -51,6 +51,10 @@ Every scene accepts `duration` (seconds) if you want to override the default tim
 
 **Music:** set `"music": "assets/audio/track.mp3"` and it is mixed in with a fade-out. For better reach, leave it empty and add a trending sound in the Instagram app when you upload.
 
+## Animated IT support ad (no footage needed)
+
+`content/reels/it-destek-animasiya.json` renders a finished 30s flat-illustration ad (internet outage -> call Sentri -> technician fixes it -> end card) from `templates/story-it.html`. Edit the dialogue lines in the JSON and run `npm run render -- content/reels/it-destek-animasiya.json`.
+
 ## Live-action commercial (AI video clips + Sentri branding)
 
 Photorealistic footage must come from an AI video tool (Veo, Kling, Sora, Runway…) or a real shoot. This repo does the editing part.

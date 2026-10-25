@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<title>sentri.az IT support story</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+  /* Flat-illustration version of the "internet is down" IT support ad. All drawing is
+     SVG built here; texts come from the content JSON. Same seek(t) contract as reel.html. */
+  html, body { background: #000; }
+  .canvas { width: 1080px; height: 1920px; }
+  .scene { position: absolute; inset: 0; }
+  .scene svg.stage { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .bug { position: absolute; top: 110px; right: 80px; width: 86px; height: 86px; z-index: 5; }
+
+  .bubble { position: absolute; max-width: 780px; padding: 28px 40px; border-radius: 40px; background: var(--white); color: var(--bg); font-size: 48px; font-weight: 700; line-height: 1.25; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); transform-origin: var(--ox, 20%) 100%; }
+  .bubble::after { content: ""; position: absolute; bottom: -26px; left: var(--tail, 80px); border: 18px solid transparent; border-top: 28px solid var(--white); border-bottom: 0; }
+  .bubble.think { font-size: 64px; letter-spacing: 6px; padding: 12px 40px 28px; }
+  .caption { position: absolute; left: 80px; right: 80px; top: 470px; text-align: center; font-size: 58px; font-weight: 600; font-style: italic; }
+  .title { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font-size: 80px; font-weight: 800; }
+
+  .inset { position: absolute; left: 180px; top: 330px; width: 720px; height: 470px; border-radius: 30px; background: #0b1f55; border: 10px solid #e9eefb; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4); overflow: hidden; }
+  .inset .bar { height: 64px; background: #dfe6f7; display: flex; align-items: center; gap: 12px; padding: 0 22px; }
+  .inset .bar i { width: 18px; height: 18px; border-radius: 50%; background: #ff5f57; }
+  .inset .bar i:nth-child(2) { background: #febc2e; }
+  .inset .bar i:nth-child(3) { background: #28c840; }
+  .inset .bar b { flex: 1; height: 30px; border-radius: 15px; background: #fff; margin-left: 14px; }
+  .inset .msg { position: absolute; left: 0; right: 0; bottom: 46px; text-align: center; font-size: 38px; color: var(--muted); }
+
+  .phone { position: absolute; left: 290px; top: 470px; width: 500px; height: 960px; border-radius: 70px; background: #0b1530; border: 14px solid #e9eefb; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45); display: flex; flex-direction: column; align-items: center; padding-top: 150px; }
+  .phone .logo { width: 170px; height: 170px; }
+  .phone .who { font-size: 56px; font-weight: 700; margin-top: 40px; }
+  .phone .num { font-size: 38px; color: var(--muted); margin-top: 10px; }
+  .phone .state { font-size: 36px; color: var(--accent); margin-top: 30px; }
+  .phone .call { position: absolute; bottom: 110px; width: 130px; height: 130px; border-radius: 50%; background: #28c840; display: grid; place-items: center; }
+  .phone .call svg { width: 64px; height: 64px; fill: #fff; }
+  .ring { position: absolute; left: 50%; top: 150px; width: 170px; height: 170px; margin-left: -85px; border-radius: 50%; border: 6px solid var(--accent); }
+
+  .checks { position: absolute; left: 520px; top: 420px; width: 500px; display: grid; gap: 22px; }
+  .check { display: flex; align-items: center; gap: 20px; padding: 24px 28px; border-radius: 24px; background: var(--card); border: 2px solid var(--card-line); font-size: 36px; font-weight: 600; }
+  .check span { flex: none; width: 54px; height: 54px; border-radius: 50%; background: #28c840; display: grid; place-items: center; }
+  .check svg { width: 32px; height: 32px; stroke: #fff; stroke-width: 4; fill: none; }
+
+  .end { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .end .logo { width: 250px; height: 250px; }
+  .end .word { font-size: 88px; font-weight: 600; letter-spacing: 22px; margin: 56px -22px 0 0; }
+  .end .line { font-size: 58px; font-weight: 700; margin-top: 46px; }
+  .end .rule { width: 300px; height: 4px; border-radius: 2px; margin: 56px 0 46px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--white), rgba(255, 255, 255, 0)); }
+  .end .tel { font-size: 70px; font-weight: 500; }
+  .end .mail { font-size: 44px; color: var(--muted); margin-top: 16px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="common.js"></script>
+<script>
+const clamp = (x) => Math.max(0, Math.min(1, x));
+const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const prog = (t, start, dur = 0.5) => ease((t - start) / dur);
+const lerp = (a, b, p) => a + (b - a) * p;
+const NS = "http://www.w3.org/2000/svg";
+
+function svg(markup) {
+  const s = document.createElementNS(NS, "svg");
+  s.setAttribute("class", "stage");
+  s.setAttribute("viewBox", "0 0 1080 1920");
+  s.innerHTML = `<defs><filter id="outline" x="-20%" y="-20%" width="140%" height="140%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="d"/>
+      <feFlood flood-color="#ffffff"/><feComposite in2="d" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>` + markup;
+  return s;
+}
+const $ = (root, sel) => root.querySelector(sel);
+
+// A flat character standing on (x, y). Arms are separate groups so scenes can rotate them.
+// Angles: 0 = hanging down, 180 = straight up; positive swings the arm outward.
+function person(id, x, y, o = {}) {
+  const skin = o.skin || "#e8b48d", shirt = o.shirt || "#ffffff", hair = o.hair || "#2a1d17", pants = o.pants || "#16224a";
+  const arm = (side) => `<g class="arm-${side}" transform="translate(${side === "l" ? -78 : 78} -440)">
+      <rect x="-17" y="0" width="34" height="185" rx="17" fill="${shirt}"/><circle cx="0" cy="190" r="22" fill="${skin}"/></g>`;
+  return `<g id="${id}" transform="translate(${x} ${y}) scale(${o.scale || 1})" filter="url(#outline)">
+    <rect x="-62" y="-250" width="54" height="250" rx="22" fill="${pants}"/>
+    <rect x="8" y="-250" width="54" height="250" rx="22" fill="${pants}"/>
+    ${arm("l")}${arm("r")}
+    <rect x="-90" y="-470" width="180" height="240" rx="48" fill="${shirt}"/>
+    ${o.badge ? `<g transform="translate(36 -420) scale(0.05)">${o.badge}</g>` : ""}
+    <rect x="-20" y="-500" width="40" height="40" fill="${skin}"/>
+    <g class="head" transform="translate(0 -555)">
+      <circle r="66" fill="${skin}"/>
+      <path d="M-68 -6 A68 68 0 0 1 68 -6 L68 -26 A68 70 0 0 0 -68 -26 Z" fill="${hair}"/>
+      <path d="M-66 -10 C-60 -70 60 -80 66 -10 C40 -40 -30 -44 -66 -10 Z" fill="${hair}"/>
+      <g class="eyes"><circle cx="-24" cy="8" r="7" fill="#1b1b2a"/><circle cx="24" cy="8" r="7" fill="#1b1b2a"/></g>
+      <path class="mouth" d="M-16 36 Q0 ${o.smile ? 48 : 40} 16 36" stroke="#1b1b2a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>`;
+}
+function setArm(root, id, side, deg) { $(root, `#${id} .arm-${side}`).setAttribute("transform", `translate(${side === "l" ? -78 : 78} -440) rotate(${side === "l" ? deg : -deg})`); }
+function look(root, id, dx) { $(root, `#${id} .eyes`).setAttribute("transform", `translate(${dx} 0)`); }
+
+const DESK = (x, w, y = 1240) => `<g filter="url(#outline)">
+  <rect x="${x}" y="${y}" width="${w}" height="34" rx="10" fill="#e9eefb"/>
+  <rect x="${x + 20}" y="${y + 34}" width="${w - 40}" height="${1600 - y - 34}" fill="#c9d6f2"/></g>`;
+const LAPTOP_BACK = (x, y = 1240) => `<g filter="url(#outline)"><path d="M${x - 120} ${y} L${x + 120} ${y} L${x + 100} ${y - 170} L${x - 100} ${y - 170} Z" fill="#9aa9c9"/>
+  <g transform="translate(${x} ${y - 90}) scale(0.06) translate(-966 -966)"><path d="M1137.5 669 A198 198 0 1 0 966 966" stroke="#fff" stroke-width="68" fill="none"/></g></g>`;
+const FLOOR = `<rect x="0" y="1600" width="1080" height="320" fill="rgba(5,32,107,0.45)"/><line x1="0" y1="1600" x2="1080" y2="1600" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>`;
+const ROUTER = (id, x, y) => `<g id="${id}" transform="translate(${x} ${y})" filter="url(#outline)">
+  <rect x="-16" y="-150" width="14" height="120" rx="7" fill="#33415f" transform="rotate(-12)"/>
+  <rect x="2" y="-150" width="14" height="120" rx="7" fill="#33415f" transform="rotate(12)"/>
+  <rect x="-110" y="-50" width="220" height="80" rx="20" fill="#e9eefb"/>
+  <circle class="led" cx="-60" cy="-10" r="10" fill="#ff5a6a"/><circle class="led" cx="-25" cy="-10" r="10" fill="#ff5a6a"/><circle class="led" cx="10" cy="-10" r="10" fill="#ff5a6a"/></g>`;
+const WIFI = (cls, x, y, s = 1) => `<g class="${cls}" transform="translate(${x} ${y}) scale(${s})" fill="none" stroke-linecap="round">
+  <path d="M-90 -40 A130 130 0 0 1 90 -40" stroke-width="18"/><path d="M-55 0 A80 80 0 0 1 55 0" stroke-width="18"/><circle cx="0" cy="40" r="14" stroke-width="0" fill="currentColor"/></g>`;
+const LOGO_PATHS = `<path d="M1137.5 669 A198 198 0 1 0 966 966"/><path d="M966 768 A198 198 0 1 1 794.5 1065"/><path d="M1308.9 768 A396 396 0 0 1 966 1362"/><path d="M623.1 768 A396 396 0 0 0 706.2 1264.9"/>`;
+const BADGE = `<g transform="translate(-966 -966)" fill="none" stroke="#ffffff" stroke-width="68" stroke-linecap="round">${LOGO_PATHS}</g>`;
+
+function bubble(text, x, y, tail = 80, cls = "") {
+  const b = el("div", "bubble " + cls, rich(text));
+  b.style.left = x + "px";
+  b.style.bottom = (1920 - y) + "px";
+  b.style.setProperty("--tail", tail + "px");
+  b.style.setProperty("--ox", tail + 30 + "px");
+  return b;
+}
+function pop(node, p) {
+  node.style.opacity = p;
+  node.style.transform = `scale(${0.6 + 0.4 * p})`;
+}
+
+// Scenes. Each: { dur, build(d) -> { node, update(t) } }
+const SCENES = [
+  { dur: 4, build(d) {
+    const node = el("div", "scene");
+    const s = svg(`${FLOOR}${person("a", 380, 1560)}${person("b", 830, 1600, { shirt: "#9cc8ff", hair: "#4a3427", skin: "#d9a07a" })}${DESK(120, 580)}${LAPTOP_BACK(400)}`);
+    const inset = el("div", "inset", `<div class="bar"><i></i><i></i><i></i><b></b></div>
+      <svg viewBox="0 0 720 406" width="700" height="406" style="position:absolute;left:0;top:64px">
+        <g class="spin" transform="translate(360 150)"><circle r="60" stroke="rgba(255,255,255,0.15)" stroke-width="14" fill="none"/>
+        <path d="M0 -60 A60 60 0 0 1 60 0" stroke="#ffd166" stroke-width="14" fill="none" stroke-linecap="round"/></g></svg>
+      <div class="msg">${rich(d.screen || "Səhifə yüklənmir…")}</div>`);
+    const b = bubble(d.lines[0], 120, 900, 220);
+    node.append(s, inset, b);
+    return { node, update(t) {
+      pop(inset, prog(t, 0.2, 0.4));
+      $(inset, ".spin").setAttribute("transform", `translate(360 150) rotate(${t * 300})`);
+      look(s, "a", lerp(0, 18, prog(t, 1.2, 0.3)));
+      $(s, "#a .head").setAttribute("transform", `translate(${lerp(0, 10, prog(t, 1.2, 0.3))} -555) rotate(${lerp(0, 8, prog(t, 1.2, 0.3))})`);
+      look(s, "b", lerp(0, -16, prog(t, 1.8, 0.3)));
+      setArm(s, "b", "l", 10); setArm(s, "b", "r", 10);
+      inset.style.opacity *= 1 - prog(t, 1.3, 0.3);
+      pop(b, prog(t, 1.5, 0.35));
+    } };
+  } },
+
+  { dur: 4, build(d) {
+    const node = el("div", "scene");
+    const s = svg(`${FLOOR}<rect x="70" y="420" width="300" height="420" rx="16" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="6"/>
+      <line x1="220" y1="420" x2="220" y2="840" stroke="rgba(255,255,255,0.35)" stroke-width="6"/>
+      ${person("b", 600, 1650, { shirt: "#9cc8ff", hair: "#4a3427", skin: "#d9a07a" })}
+      <g id="held">${ROUTER("r", 0, 0)}<g class="sig" color="#c2cff0" stroke="#c2cff0">${WIFI("w", 0, -210, 0.9)}
+        <g stroke="#ff5a6a" stroke-width="14" stroke-linecap="round"><line x1="-60" y1="-290" x2="60" y2="-170"/></g></g></g>`);
+    const b = bubble(d.lines[1], 330, 560, 380);
+    node.append(s, b);
+    return { node, update(t) {
+      const sway = Math.sin(t * 2.6) * 22;
+      const lift = prog(t, 0.1, 0.6);
+      setArm(s, "b", "l", lerp(10, 165, lift)); setArm(s, "b", "r", lerp(10, 165, lift));
+      const cx = 600 + sway * 1.5, cy = lerp(1260, 980, lift);
+      $(s, "#held").setAttribute("transform", `translate(${cx} ${cy}) rotate(${sway})`);
+      $(s, ".sig").style.opacity = lift * (0.4 + 0.6 * Math.abs(Math.sin(t * 5)));
+      look(s, "b", sway / 3);
+      pop(b, prog(t, 0.9, 0.35));
+    } };
+  } },
+
+  { dur: 4, build(d) {
+    const node = el("div", "scene");
+    const cables = [["#ffd166", "M150 1560 C260 1420 380 1640 470 1500 S640 1580 560 1440"], ["#ffffff", "M180 1580 C300 1480 260 1380 420 1450 S560 1600 640 1500"], ["#9cc8ff", "M120 1520 C240 1600 420 1400 520 1560 S600 1420 700 1560"]];
+    const s = svg(`${FLOOR}${DESK(60, 760, 1150)}
+      <g filter="url(#outline)">${cables.map(([c, p]) => `<path d="${p}" stroke="${c}" stroke-width="16" fill="none" stroke-linecap="round"/>`).join("")}
+        <rect x="560" y="1540" width="170" height="50" rx="14" fill="#e9eefb"/><circle class="pw" cx="600" cy="1565" r="12" fill="#ff5a6a"/></g>
+      <g id="crouch" transform="translate(330 1620)" filter="url(#outline)">
+        <rect x="-150" y="-60" width="230" height="56" rx="28" fill="#16224a"/>
+        <g transform="rotate(-28)"><rect x="-90" y="-330" width="180" height="230" rx="48" fill="#ffb4a2"/>
+          <g class="head" transform="translate(-30 -385)"><circle r="64" fill="#e8b48d"/><path d="M-66 -10 C-60 -70 60 -80 66 -10 C40 -40 -30 -44 -66 -10 Z" fill="#111"/>
+          <circle cx="-22" cy="12" r="7" fill="#1b1b2a"/><circle cx="22" cy="12" r="7" fill="#1b1b2a"/><path d="M-10 40 L12 40" stroke="#1b1b2a" stroke-width="5"/></g></g></g>
+      ${person("d", 880, 1650, { shirt: "#ffd166", hair: "#6b4a2f", smile: true })}`);
+    const b = bubble(d.lines[2], 260, 820, 520);
+    node.append(s, b);
+    return { node, update(t) {
+      setArm(s, "d", "l", 8);
+      setArm(s, "d", "r", lerp(8, 150, prog(t, 0.6, 0.4)) + Math.sin(t * 9) * 6 * prog(t, 1, 0.2));
+      $(s, ".pw").setAttribute("fill", Math.floor(t * 2) % 2 ? "#28c840" : "#ff5a6a");
+      $(s, "#crouch .head").setAttribute("transform", `translate(-30 -385) rotate(${Math.sin(t * 2) * 8})`);
+      pop(b, prog(t, 0.9, 0.35));
+    } };
+  } },
+
+  { dur: 4, build(d) {
+    const node = el("div", "scene");
+    const s = svg(`${FLOOR}<rect x="700" y="760" width="320" height="840" fill="rgba(5,32,107,0.55)" stroke="#e9eefb" stroke-width="14"/>
+      <g transform="translate(170 400)" filter="url(#outline)"><circle r="90" fill="#e9eefb"/>
+        <line class="hand" x1="0" y1="0" x2="0" y2="-62" stroke="#05206b" stroke-width="10" stroke-linecap="round"/><line x1="0" y1="0" x2="40" y2="0" stroke="#05206b" stroke-width="10" stroke-linecap="round"/></g>
+      ${person("a", 180, 1650, { scale: 0.85 })}${person("b", 380, 1650, { scale: 0.85, shirt: "#9cc8ff", hair: "#4a3427", skin: "#d9a07a" })}
+      ${person("m", 860, 1600, { shirt: "#d9dee8", hair: "#1b1b1b", skin: "#e2ab83", pants: "#2b3550" })}
+      <rect id="folder" x="760" y="1110" width="120" height="160" rx="10" fill="#ffd166" filter="url(#outline)"/>`);
+    const think = bubble("…", 110, 1020, 120, "think");
+    const b = bubble(d.lines[3], 260, 700, 500);
+    node.append(s, think, b);
+    return { node, update(t) {
+      $(s, ".hand").setAttribute("transform", `rotate(${t * 140})`);
+      setArm(s, "m", "l", 35); setArm(s, "m", "r", 6);
+      ["a", "b"].forEach((id) => { look(s, id, lerp(0, 22, prog(t, 0.4, 0.3))); setArm(s, id, "l", 6); setArm(s, id, "r", 6); });
+      look(s, "m", -18);
+      pop(think, prog(t, 0.7, 0.3) * (1 - prog(t, 1.7, 0.2)));
+      pop(b, prog(t, 1.9, 0.35));
+    } };
+  } },
+
+  { dur: 3, build(d) {
+    const node = el("div", "scene");
+    const phone = el("div", "phone", `<div class="ring"></div>${LOGO}<div class="who">Sentri</div><div class="num">${BRAND.phone}</div>
+      <div class="state">${rich(d.calling || "Zəng edilir…")}</div><div class="call"><svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></div>`);
+    const b = bubble(d.lines[4], 140, 430, 300);
+    node.append(phone, b);
+    const ring = $(phone, ".ring");
+    return { node, update(t) {
+      const p = prog(t, 0, 0.5);
+      phone.style.opacity = p;
+      phone.style.transform = `translateY(${(1 - p) * 200}px) rotate(${(1 - p) * -8}deg)`;
+      const r = (t * 1.2) % 1;
+      ring.style.transform = `scale(${1 + r * 0.9})`;
+      ring.style.opacity = 1 - r;
+      pop(b, prog(t, 0.6, 0.35));
+    } };
+  } },
+
+  { dur: 6, build(d) {
+    const node = el("div", "scene");
+    const title = el("div", "title", rich(d.later || "Bir az sonra…"));
+    const s = svg(`${FLOOR}<rect x="60" y="760" width="340" height="24" rx="8" fill="#e9eefb" filter="url(#outline)"/>${ROUTER("r", 230, 740)}
+      <g class="wifi" color="#c2cff0" stroke="#c2cff0">${WIFI("w", 230, 520, 0.9)}</g>
+      ${person("t", 300, 1650, { shirt: "#0b1f55", hair: "#151515", skin: "#d39b74", pants: "#2b3550", badge: BADGE, smile: true })}
+      <g id="lap" filter="url(#outline)"><rect x="-120" y="-16" width="240" height="20" rx="8" fill="#9aa9c9"/><rect x="-105" y="-150" width="210" height="136" rx="10" fill="#0b1f55"/>
+        <rect x="-80" y="-125" width="120" height="12" rx="6" fill="rgba(255,255,255,0.4)"/><rect x="-80" y="-100" width="90" height="12" rx="6" fill="rgba(255,255,255,0.25)"/></g>`);
+    const checks = el("div", "checks");
+    const rows = (d.checks || []).map((c) => {
+      const r = el("div", "check", `<span><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>${rich(c)}`);
+      checks.append(r);
+      return r;
+    });
+    node.append(s, checks, title);
+    return { node, update(t) {
+      const intro = 1 - prog(t, 0.9, 0.3);
+      title.style.opacity = prog(t, 0, 0.3) * intro;
+      s.style.opacity = prog(t, 1, 0.4);
+      setArm(s, "t", "l", 18); setArm(s, "t", "r", 18);
+      $(s, "#lap").setAttribute("transform", `translate(300 ${1440 + Math.sin(t * 3) * 3})`);
+      rows.forEach((r, i) => pop(r, prog(t, 1.6 + i * 0.9, 0.35)));
+      const fixed = prog(t, 1.6 + rows.length * 0.9, 0.4);
+      $(s, "#r").querySelectorAll(".led").forEach((l, i) => l.setAttribute("fill", fixed > 0.5 || (t > 1.6 && Math.floor(t * 4 + i) % 2) ? "#28c840" : "#ff5a6a"));
+      const w = $(s, ".wifi");
+      w.setAttribute("color", fixed > 0.5 ? "#28c840" : "#c2cff0");
+      w.setAttribute("stroke", fixed > 0.5 ? "#28c840" : "#c2cff0");
+      w.style.opacity = 0.4 + 0.6 * fixed;
+      look(s, "t", 10);
+    } };
+  } },
+
+  { dur: 3, build(d) {
+    const node = el("div", "scene");
+    const s = svg(`${FLOOR}<rect x="720" y="900" width="300" height="24" rx="8" fill="#e9eefb" filter="url(#outline)"/>
+      ${person("a", 230, 1560, { smile: true })}${person("d", 520, 1560, { shirt: "#ffd166", hair: "#6b4a2f", smile: true })}${DESK(60, 640)}${LAPTOP_BACK(230)}${LAPTOP_BACK(520)}
+      ${person("b", 860, 1650, { shirt: "#9cc8ff", hair: "#4a3427", skin: "#d9a07a", smile: true })}${ROUTER("r", 0, 0)}`);
+    const cap = el("div", "caption", rich(d.lines[5]));
+    node.append(s, cap);
+    return { node, update(t) {
+      const place = prog(t, 0.2, 0.9);
+      setArm(s, "b", "l", lerp(150, 8, prog(t, 1.2, 0.4))); setArm(s, "b", "r", lerp(150, 8, prog(t, 1.2, 0.4)));
+      $(s, "#r").setAttribute("transform", `translate(${lerp(860, 870, place)} ${lerp(1060, 880, place)})`);
+      $(s, "#r").querySelectorAll(".led").forEach((l) => l.setAttribute("fill", "#28c840"));
+      $(s, "#b").setAttribute("transform", `translate(${lerp(860, 760, prog(t, 1.5, 1))} 1650)`);
+      look(s, "b", -14 * prog(t, 1.5, 0.3));
+      ["a", "d"].forEach((id) => { setArm(s, id, "l", 20); setArm(s, id, "r", 20 + Math.sin(t * 10 + (id === "a" ? 0 : 1)) * 6); });
+      cap.style.opacity = prog(t, 0.5, 0.4);
+    } };
+  } },
+
+  { dur: 2, brand: false, build(d) {
+    const node = el("div", "scene end");
+    const parts = [el("div", null, LOGO), el("div", "word", BRAND.name), el("div", "line", rich(d.endLine)), el("div", "rule"),
+      el("div", "tel", BRAND.phone), el("div", "mail", BRAND.email)];
+    node.append(...parts);
+    return { node, update(t) { parts.forEach((p, i) => { const q = prog(t, 0.05 + i * 0.1, 0.4); p.style.opacity = q; p.style.transform = `translateY(${(1 - q) * 30}px)`; }); } };
+  } },
+];
+
+const FADE = 0.25;
+let timeline = [], total = 0, bug;
+function seek(t) {
+  for (const s of timeline) {
+    const local = t - s.start;
+    const active = local >= 0 && local < s.dur;
+    s.node.style.display = active ? "" : "none";
+    if (!active) continue;
+    s.update(local);
+    const fadeIn = s.start === 0 ? 1 : prog(local, 0, FADE);
+    s.node.style.opacity = Math.min(fadeIn, 1 - prog(local, s.dur - FADE, FADE));
+    bug.style.opacity = s.brand === false ? 0 : 0.9;
+  }
+}
+
+loadData().then((d) => {
+  const canvas = el("div", "canvas");
+  bug = el("div", null, LOGO.replace('class="logo"', 'class="bug"')).firstChild;
+  for (const def of SCENES) {
+    const sc = def.build(d);
+    timeline.push({ ...sc, dur: def.dur, brand: def.brand, start: total });
+    total += def.dur;
+    canvas.append(sc.node);
+  }
+  canvas.append(bug);
+  document.getElementById("root").append(canvas);
+  window.TOTAL = total;
+  window.seek = seek;
+  seek(0);
+  return document.fonts.ready;
+}).then(() => {
+  window.READY = true;
+  if (window.RENDER) return;
+  let t0 = performance.now();
+  document.body.onclick = () => (t0 = performance.now());
+  const loop = (now) => { seek(((now - t0) / 1000) % total); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+});
+</script>
+</body>
+</html>

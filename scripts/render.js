@@ -51,7 +51,7 @@ async function renderPost(browser, port, data, out) {
 }
 
 async function renderReel(browser, port, data, out) {
-  const page = await openPage(browser, port, "reel.html", data, { width: 1080, height: 1920 });
+  const page = await openPage(browser, port, data.template || "reel.html", data, { width: 1080, height: 1920 });
   const total = await page.evaluate(() => window.TOTAL);
   const frames = Math.round(total * FPS);
   const music = data.music ? path.join(ROOT, data.music) : null;
@@ -96,7 +96,8 @@ async function main() {
   if (args[0] === "preview") {
     console.log(`Preview server running. Open in your browser:`);
     for (const f of collect("all")) {
-      const tpl = f.includes(`${path.sep}reels${path.sep}`) || f.includes("/reels/") ? "reel.html" : "post.html";
+      const data = JSON.parse(fs.readFileSync(path.resolve(ROOT, f), "utf8"));
+      const tpl = data.template || (Array.isArray(data.scenes) ? "reel.html" : "post.html");
       console.log(`  http://127.0.0.1:${port}/templates/${tpl}?data=${f.split(path.sep).join("/")}`);
     }
     console.log("Press Ctrl+C to stop. Save the JSON and refresh the page to see changes.");
@@ -109,7 +110,7 @@ async function main() {
     for (const file of args.flatMap(collect)) {
       const data = JSON.parse(fs.readFileSync(path.resolve(ROOT, file), "utf8"));
       const name = path.basename(file, ".json");
-      const isReel = Array.isArray(data.scenes);
+      const isReel = Array.isArray(data.scenes) || Boolean(data.template);
       const out = path.join(OUT, name + (isReel ? ".mp4" : ".png"));
       console.log(`${isReel ? "Reel" : "Post"}: ${file}`);
       await (isReel ? renderReel : renderPost)(browser, port, data, out);

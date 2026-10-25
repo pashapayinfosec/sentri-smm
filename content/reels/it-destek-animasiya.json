@@ -1,0 +1,16 @@
+{
+  "template": "story-it.html",
+  "screen": "Səhifə yüklənmir…",
+  "lines": [
+    "Səndə də internet yoxdur?",
+    "Bəlkə burada yaxşı tutsun…",
+    "Söndür, yandır. Mən həmişə elə edirəm.",
+    "Bizim işimiz nə vaxt davam edəcək?",
+    "Sentri? İT dəstəyə ehtiyacımız var.",
+    "Hər kəs öz işini görsün."
+  ],
+  "calling": "Zəng edilir…",
+  "later": "Bir az sonra…",
+  "checks": ["Router yoxlanıldı", "Kabellər qaydasında", "İnternet bərpa olundu"],
+  "endLine": "İT dəstəyiniz — **Sentri**."
+}
