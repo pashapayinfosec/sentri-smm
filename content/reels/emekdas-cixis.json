@@ -1,0 +1,9 @@
+{
+  "scenes": [
+    { "type": "hook", "badge": "HR və rəhbərlər üçün", "title": "Əməkdaş işdən çıxdı.\n**Bəs hesabları?**" },
+    { "type": "text", "title": "Köhnə hesablar\n__açıq qapı__ kimidir", "subtitle": "Unudulmuş giriş — məlumat sızmasının\nən sakit yoludur.", "size": 80 },
+    { "type": "list", "title": "Çıxış günü **yoxlama siyahısı**", "itemDuration": 1.2,
+      "items": ["E-poçt və korporativ hesabları bağlayın", "Ortaq parolları dəyişin", "VPN və uzaqdan girişi ləğv edin", "Noutbuk və cihazları geri alın", "Bulud fayllarının sahibini dəyişin"] },
+    { "type": "cta", "icon": "shield", "title": "Girişlərinizi\nnəzarətdə saxlayın", "button": "Konsultasiya üçün yazın" }
+  ]
+}

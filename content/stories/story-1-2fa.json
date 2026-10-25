@@ -1,0 +1,12 @@
+{
+  "format": "story",
+  "eyebrow": "Kibertəhlükəsizlik",
+  "headline": "Parolunuz oğurlansa belə\n**hesabınız qorunsun**",
+  "uppercase": false,
+  "bullets": [
+    "**İki mərhələli doğrulama (2FA)** girişə ikinci kilid əlavə edir",
+    "SMS əvəzinə **autentifikator tətbiqi** daha etibarlıdır",
+    "İlk növbədə **e-poçt və bank** hesablarında aktiv edin"
+  ],
+  "footer": "**5 dəqiqəlik ayar** —\nillərlə qoruma"
+}

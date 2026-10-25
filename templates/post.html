@@ -27,6 +27,13 @@
   ul { list-style: none; margin-top: 54px; display: grid; gap: 22px; }
   li { font-size: 36px; line-height: 1.35; display: flex; gap: 18px; color: #e6edfb; }
   li::before { content: "✦"; color: var(--white); }
+  /* In bullets, highlighted words are bold white like the reference posts, not yellow */
+  li .accent-orange { color: var(--white); font-weight: 700; }
+  .story h1 { font-size: 84px; }
+  .story .eyebrow { font-size: 30px; }
+  .story ul { gap: 34px; margin-top: 70px; }
+  .story li { font-size: 44px; }
+  .story .note { font-size: 34px; }
 
   .spacer { flex: 1; }
 
@@ -63,7 +70,7 @@ loadData().then((d) => {
   c.append(h1);
   if (d.bullets?.length) {
     const ul = el("ul");
-    d.bullets.forEach((b) => ul.append(el("li", null, rich(b))));
+    d.bullets.forEach((b) => ul.append(el("li", null, `<span>${rich(b)}</span>`)));
     c.append(ul);
   }
   c.append(el("div", "spacer"));

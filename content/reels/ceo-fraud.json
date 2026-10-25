@@ -1,0 +1,23 @@
+{
+  "scenes": [
+    { "type": "hook", "badge": "Mühasibatlıq üçün", "title": "Direktordan təcili məktub:\n**“Bu gün ödəyin”**" },
+    {
+      "type": "email",
+      "from": "Direktor",
+      "address": "direktor@sirket-az.com",
+      "subject": "Təcili ödəniş —\nməxfi",
+      "body": "Bu gün saat 15:00-a qədər köçürün.\nZəng etməyin, iclasdayam.",
+      "attachment": "Hesab_rekvizitləri.pdf",
+      "button": "Rekvizitlərə bax",
+      "link": "http://sirket-az.com.\n[pay-docs.xyz/inv]",
+      "caption": "Tanış ad, tanış üslub…",
+      "callouts": [
+        { "title": "Domen fərqlidir", "text": "Şirkətin domeni deyil —\nbir hərf və ya uzantı dəyişib.", "highlight": "address" },
+        { "title": "Təcililik və gizlilik", "text": "“Bu gün”, “zəng etməyin” —\nyoxlamağın qarşısını alır.", "highlight": "body" },
+        { "title": "Yoxlayın", "text": "Ödənişdən əvvəl rəhbərə\ntanış nömrə ilə zəng edin.", "highlight": ["attachment", "link"] }
+      ]
+    },
+    { "type": "text", "title": "Bir zəng\n**böyük itkinin** qarşısını alır", "size": 78 },
+    { "type": "cta", "icon": "shield", "title": "Komandanız fişinq\ntestindən keçə bilər?", "button": "Ödənişsiz test üçün müraciət edə bilərsiniz" }
+  ]
+}
