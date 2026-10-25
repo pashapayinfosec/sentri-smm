@@ -1,0 +1,46 @@
+{
+  "scenes": [
+    {
+      "type": "hook",
+      "badge": "Biznes sahibləri üçün",
+      "title": "Yanlış domen seçimi\n**müştəri itkisinə**\nsəbəb ola bilər"
+    },
+    {
+      "type": "text",
+      "title": "Domen sadəcə\nsayt ünvanı deyil",
+      "subtitle": "**Brendinizin internetdəki vizit kartıdır.**",
+      "size": 76
+    },
+    {
+      "type": "list",
+      "title": "Uğurlu domenin\n**5 qızıl qaydası**",
+      "itemDuration": 1.2,
+      "items": [
+        "Qısa və yadda qalan olsun",
+        "Eşidildiyi kimi yazılsın",
+        "Uzantı güvən yaratsın: .az, .com",
+        "Oxşar adları da qoruyun",
+        "Mülkiyyət sizin adınıza olsun"
+      ]
+    },
+    {
+      "type": "browser",
+      "title": "Texniki detal çoxdur,\n**vaxtınız yoxdur?**",
+      "url": "sizinbrend.az",
+      "badges": ["🔍 Ad seçimi", "📝 Qeydiyyat", "⚙️ Quraşdırma"]
+    },
+    {
+      "type": "text",
+      "title": "Qeydiyyat bizə həvalə,\n**sizə ödənişsiz**",
+      "subtitle": "Siz yalnız rəsmi domen haqqını ödəyirsiniz —\nqalan bütün prosesi ödənişsiz həyata keçiririk.",
+      "size": 74,
+      "duration": 4
+    },
+    {
+      "type": "cta",
+      "icon": "globe",
+      "title": "Domeninizi bu gün\nqeydiyyatdan keçirək",
+      "button": "Ödənişsiz konsultasiya üçün yazın"
+    }
+  ]
+}
