@@ -1,0 +1,11 @@
+{
+  "format": "post",
+  "headline": "SMS kodunu\n**kimə deyirsiniz?**",
+  "bullets": [
+    "**Kod razılıq deməkdir:** onu deyən əməliyyatı təsdiqləmiş olur.",
+    "**Özünüz başlatmamısınızsa:** kredit, köçürmə və ya giriş kodunu heç kimə deməyin.",
+    "**Təcili və təhdidli danışıq:** saxta zənglərdə tez-tez rast gəlinən əlamətdir.",
+    "**Şübhə varsa:** zəngi bitirin, bankın rəsmi nömrəsinə özünüz zəng edin."
+  ],
+  "footer": "Əmin deyilsinizsə —\n**kodu deməyin**"
+}
