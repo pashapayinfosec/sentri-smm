@@ -4,9 +4,9 @@
   "headline": "“Bankdan zəng edirəm,\n**kodu deyin**”",
   "uppercase": false,
   "bullets": [
-    "Bank **SMS kodunu heç vaxt** soruşmur",
-    "Təcili və təhdidli danışıq — **ilk xəbərdarlıq** əlamətidir",
-    "Zəngi bitirin və **rəsmi nömrəyə** özünüz zəng edin"
+    "SMS kodu **əməliyyatı təsdiqləyir** — kodu deyən razılıq vermiş olur",
+    "Kodu yalnız **özünüz başlatdığınız** əməliyyat üçün istifadə edin",
+    "Şübhə varsa, zəngi bitirin və **bankın rəsmi nömrəsinə** özünüz zəng edin"
   ],
-  "footer": "**Kod sizindir** —\nheç kimlə paylaşmayın"
+  "footer": "Əmin deyilsinizsə —\n**kodu deməyin**"
 }
