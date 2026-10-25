@@ -72,6 +72,7 @@ Diagonal gradient from deep navy-blue `#05206b` (top-left) through royal blue `#
 ## Wording rules
 
 - Never write **"pulsuz"**, always write **"ödənişsiz"** (e.g. "Ödənişsiz konsultasiya üçün yazın").
+- Never write **"fidyə"**; use **"ransomware"** instead.
 
 ## Preview while editing
 

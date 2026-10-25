@@ -1,7 +1,7 @@
 {
   "scenes": [
     { "type": "hook", "badge": "Ransomware", "title": "Bir səhər bütün fayllar\n**kilidli açılsa?**" },
-    { "type": "text", "title": "Fidyə virusu\n__faylları şifrələyir__", "subtitle": "və açmaq üçün pul tələb edir.", "size": 80 },
+    { "type": "text", "title": "Ransomware virusu\n__faylları şifrələyir__", "subtitle": "və açmaq üçün pul tələb edir.", "size": 80 },
     { "type": "list", "title": "Necə daxil olur?", "itemDuration": 1.3,
       "items": ["Saxta e-poçt əlavəsi", "Yenilənməmiş proqram", "Zəif və ya təkrarlanan parol"] },
     { "type": "list", "title": "**Necə qorunmalı?**", "itemDuration": 1.3,
