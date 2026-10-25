@@ -1,0 +1,12 @@
+{
+  "format": "story",
+  "eyebrow": "Veb-sayt",
+  "headline": "Saytınızda\n**“Təhlükəsiz deyil”**\nyazısı çıxır?",
+  "uppercase": false,
+  "bullets": [
+    "Brauzer bunu **SSL sertifikatı** olmayan saytlarda göstərir",
+    "Ziyarətçi formu doldurmağa **tərəddüd edir**",
+    "Həlli: **HTTPS** və sertifikatın vaxtında yenilənməsi"
+  ],
+  "footer": "Kiçik detal —\n**böyük etibar**"
+}

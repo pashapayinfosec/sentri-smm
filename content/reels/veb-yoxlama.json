@@ -1,0 +1,10 @@
+{
+  "scenes": [
+    { "type": "hook", "badge": "Sayt sahibləri üçün", "title": "Saytınız müştəri gətirir,\n**yoxsa sadəcə var?**" },
+    { "type": "list", "title": "**5 sualda** yoxlayın", "itemDuration": 1.3,
+      "items": ["Telefonda rahat açılır?", "3 saniyədə nə etdiyiniz aydındır?", "Əlaqə düyməsi görünür?", "Ünvan sətrində kilid (HTTPS) var?", "Son dəfə nə vaxt yenilənib?"] },
+    { "type": "text", "title": "Bir “yox” belə\n**müştəri itkisi** deməkdir", "size": 78 },
+    { "type": "browser", "title": "Saytınızı **birlikdə**\nyaxşılaşdıraq", "url": "sizinbiznes.az", "badges": ["📱 Mobil", "🔒 SSL", "⚡ Sürət", "📞 Əlaqə"] },
+    { "type": "cta", "icon": "globe", "title": "Saytınızı\nyoxlatmaq istəyirsiniz?", "button": "Ödənişsiz konsultasiya üçün yazın" }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "scenes": [
+    { "type": "hook", "badge": "Biznes sahibləri üçün", "title": "“Instagram səhifəm var,\n**sayt nəyimə lazımdır?**”" },
+    { "type": "list", "title": "Səhifə **sizin deyil**", "itemDuration": 1.4,
+      "items": ["Hesab bloklana və ya sındırıla bilər", "Qaydaları platforma müəyyən edir", "Google axtarışında az görünürsünüz"] },
+    { "type": "list", "title": "Sayt isə **sizindir**", "itemDuration": 1.4,
+      "items": ["Öz domeniniz — öz brendiniz", "Google-da tapılırsınız", "Məlumatlar sizin nəzarətinizdədir"] },
+    { "type": "text", "title": "Instagram — vitrin,\n**sayt — sizin ofisiniz**", "size": 76 },
+    { "type": "cta", "icon": "globe", "title": "Biznesinizi\nonlayna çıxaraq!", "button": "Ödənişsiz konsultasiya üçün yazın" }
+  ]
+}
