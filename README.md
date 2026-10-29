@@ -56,6 +56,10 @@ Every scene accepts `duration` (seconds) if you want to override the default tim
 
 `content/reels/it-destek-animasiya.json` renders a finished 30s flat-illustration ad (internet outage -> call Sentri -> technician fixes it -> end card) from `templates/story-it.html`. Edit the dialogue lines in the JSON and run `npm run render -- content/reels/it-destek-animasiya.json`.
 
+## Portfolio showcase reel (client website)
+
+`content/reels/palid-showcase.json` uses `templates/showcase.html`: intro, the client's full-page screenshot scrolling smoothly inside a browser frame with feature captions (`stops`), floating detail crops (`cards`), and a Sentri end card. Assets for Palıd Perfumery are in `assets/projects/palid/` (the full page was stitched from a screen recording).
+
 ## Live-action commercial (AI video clips + Sentri branding)
 
 Photorealistic footage must come from an AI video tool (Veo, Kling, Sora, Runway…) or a real shoot. This repo does the editing part.

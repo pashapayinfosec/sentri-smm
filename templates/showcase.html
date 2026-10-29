@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<title>sentri.az project showcase</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+  /* Portfolio reel in the style of Dribbble website showcases: the client's full-page
+     screenshot scrolls smoothly inside a browser frame, then detail crops float as cards.
+     Same seek(t) contract as reel.html. */
+  html, body { background: #000; }
+  .canvas { width: 1080px; height: 1920px; }
+  .layer { position: absolute; inset: 0; }
+  .brandbar { position: absolute; top: 120px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 14px; font-size: 30px; color: var(--muted); z-index: 5; }
+  .brandbar .logo { width: 46px; height: 46px; }
+
+  .intro { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 330px; }
+  .badge { padding: 12px 30px; border-radius: 40px; background: rgba(255, 209, 102, 0.14); border: 2px solid rgba(255, 209, 102, 0.6); color: var(--accent); font-weight: 700; font-size: 28px; letter-spacing: 3px; text-transform: uppercase; }
+  .intro h1 { font-size: 110px; font-weight: 800; line-height: 1.05; margin-top: 46px; }
+  .intro p { font-size: 44px; line-height: 1.4; color: #dce5f7; margin-top: 30px; }
+
+  .browser { position: absolute; left: 40px; top: 430px; width: 1000px; height: 1300px; border-radius: 30px; overflow: hidden; background: #fff; box-shadow: 0 50px 120px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.25); transform-origin: 50% 0; }
+  .browser .bar { position: relative; z-index: 3; height: 70px; background: #eef1f7; display: flex; align-items: center; gap: 12px; padding: 0 26px; }
+  .browser .bar i { width: 18px; height: 18px; border-radius: 50%; background: #ff5f57; }
+  .browser .bar i:nth-child(2) { background: #febc2e; }
+  .browser .bar i:nth-child(3) { background: #28c840; }
+  .browser .bar span { flex: 1; margin-left: 16px; height: 38px; border-radius: 19px; background: #fff; display: flex; align-items: center; padding: 0 20px; font-size: 22px; color: #45506a; }
+  .viewport { position: absolute; left: 0; right: 0; top: 70px; bottom: 0; overflow: hidden; }
+  .viewport img.page { position: absolute; left: 0; top: 0; width: 1000px; }
+  .viewport img.sticky { position: absolute; left: 0; top: 0; width: 1000px; z-index: 2; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
+  .chip { position: absolute; left: 0; right: 0; top: 330px; text-align: center; }
+  .chip span { display: inline-block; padding: 18px 40px; border-radius: 50px; background: var(--white); color: var(--bg-2); font-size: 40px; font-weight: 700; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3); }
+
+  .details h2 { position: absolute; left: 0; right: 0; top: 270px; text-align: center; font-size: 76px; font-weight: 800; line-height: 1.15; }
+  .card { position: absolute; border-radius: 26px; overflow: hidden; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45), 0 0 0 2px rgba(255, 255, 255, 0.2); background: #fff; }
+  .card img { display: block; width: 100%; }
+
+  .statement { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+  .statement h2 { font-size: 84px; font-weight: 800; line-height: 1.18; }
+
+  .end { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: inherit; }
+  .end .logo { width: 230px; height: 230px; }
+  .end .word { font-size: 88px; font-weight: 600; letter-spacing: 22px; margin: 50px -22px 0 0; }
+  .end .services { font-size: 36px; color: var(--muted); margin-top: 24px; }
+  .end .pill { margin-top: 56px; background: var(--white); color: var(--bg-2); font-weight: 700; font-size: 40px; padding: 26px 50px; border-radius: 60px; }
+  .end .tel { font-size: 66px; font-weight: 500; margin-top: 60px; }
+  .end .mail { font-size: 42px; color: var(--muted); margin-top: 14px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="common.js"></script>
+<script>
+const clamp = (x) => Math.max(0, Math.min(1, x));
+const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const inout = (x) => { x = clamp(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const prog = (t, start, dur = 0.5) => ease((t - start) / dur);
+const lerp = (a, b, p) => a + (b - a) * p;
+function show(node, p, dy = 40) { node.style.opacity = p; node.style.transform = `translateY(${(1 - p) * dy}px)`; }
+
+loadData().then((d) => {
+  const P = d.project, W = 1000, scale = W / P.pageWidth;
+  const canvas = el("div", "canvas");
+  const brandbar = el("div", "brandbar", LOGO + BRAND.handle);
+
+  const intro = el("div", "layer intro");
+  const parts = [el("div", "badge", rich(d.badge)), el("h1", null, rich(P.name)), el("p", null, rich(d.subtitle))];
+  intro.append(...parts);
+
+  const browser = el("div", "browser", `<div class="bar"><i></i><i></i><i></i><span>🔒 ${P.url || ""}</span></div>
+    <div class="viewport"><img class="page" src="/${P.page}"><img class="sticky" src="/${P.header}"></div>`);
+  const page = $(browser, ".page"), sticky = $(browser, ".sticky");
+  const chip = el("div", "chip", "<span></span>");
+
+  const details = el("div", "layer details");
+  details.append(el("h2", null, rich(d.detailsTitle)));
+  const cards = (d.cards || []).map((c) => {
+    const n = el("div", "card", `<img src="/${c.src}">`);
+    Object.assign(n.style, { left: c.x + "px", top: c.y + "px", width: c.w + "px" });
+    details.append(n);
+    return { n, c };
+  });
+
+  const statement = el("div", "layer statement", `<h2>${rich(d.statement)}</h2>`);
+  const end = el("div", "layer end");
+  const endParts = [el("div", null, LOGO), el("div", "word", BRAND.name), el("div", "services", rich(d.services)),
+    el("div", "pill", rich(d.button)), el("div", "tel", BRAND.phone), el("div", "mail", BRAND.email)];
+  end.append(...endParts);
+
+  canvas.append(intro, details, statement, browser, chip, end, brandbar);
+  document.getElementById("root").append(canvas);
+
+  // Timeline (seconds)
+  const T = { intro: 0, scroll: 2.6, details: d.stops.at(-1).t + 2.6, statement: 0, end: 0 };
+  T.statement = T.details + 6;
+  T.end = T.statement + 2.8;
+  window.TOTAL = T.end + 3.6;
+
+  function scrollAt(t) {
+    const s = d.stops;
+    if (t <= s[0].t) return s[0].y;
+    for (let i = 1; i < s.length; i++) {
+      const move = s[i].t - 1.5;
+      if (t < move) return s[i - 1].y;
+      if (t < s[i].t) return lerp(s[i - 1].y, s[i].y, inout((t - move) / 1.5));
+    }
+    return s.at(-1).y;
+  }
+
+  window.seek = (t) => {
+    // intro
+    const introOut = 1 - prog(t, T.scroll - 0.6, 0.4);
+    parts.forEach((p, i) => show(p, prog(t, 0.1 + i * 0.25, 0.5) * introOut, 40));
+    // browser: rises in, then shrinks away before the detail cards
+    const rise = prog(t, T.scroll - 0.3, 0.9), leave = prog(t, T.details - 0.4, 0.6);
+    browser.style.opacity = rise * (1 - leave);
+    browser.style.transform = `translateY(${(1 - rise) * 700}px) scale(${1 - leave * 0.2})`;
+    const y = scrollAt(t);
+    page.style.transform = `translateY(${-y * scale}px)`;
+    sticky.style.opacity = clamp((y - 120) / 80);
+    // caption chip for the current stop
+    let cur = null;
+    d.stops.forEach((s) => { if (t >= s.t - 0.2 && t < s.t + (s.hold || 2.2)) cur = s; });
+    const chipText = $(chip, "span");
+    if (cur) {
+      chipText.innerHTML = rich(cur.caption);
+      const local = t - (cur.t - 0.2), hold = cur.hold || 2.2;
+      chip.style.opacity = prog(local, 0, 0.3) * (1 - prog(local, hold - 0.3, 0.3)) * (1 - leave);
+      chip.style.transform = `translateY(${(1 - prog(local, 0, 0.3)) * 20}px)`;
+    } else chip.style.opacity = 0;
+    // detail cards
+    const dIn = prog(t, T.details, 0.4), dOut = 1 - prog(t, T.statement - 0.4, 0.4);
+    details.style.opacity = dIn * dOut;
+    $(details, "h2").style.transform = `translateY(${(1 - dIn) * 30}px)`;
+    cards.forEach(({ n, c }, i) => {
+      const p = prog(t, T.details + 0.3 + i * 0.35, 0.6);
+      const float = Math.sin((t + i) * 1.6) * 10;
+      n.style.opacity = p;
+      n.style.transform = `translateY(${(1 - p) * 120 + float}px) rotate(${(c.r || 0) * p}deg) scale(${0.9 + 0.1 * p})`;
+    });
+    // statement
+    const sIn = prog(t, T.statement, 0.5), sOut = 1 - prog(t, T.end - 0.3, 0.3);
+    statement.style.opacity = sIn * sOut;
+    statement.style.transform = `scale(${0.95 + 0.05 * sIn})`;
+    // end card
+    end.style.opacity = prog(t, T.end, 0.4);
+    endParts.forEach((p, i) => show(p, prog(t, T.end + 0.1 + i * 0.12, 0.45), 30));
+    brandbar.style.opacity = 1 - prog(t, T.end, 0.3);
+  };
+  window.seek(0);
+  return Promise.all([document.fonts.ready, ...[...canvas.querySelectorAll("img")].map((i) => i.decode().catch(() => {}))]);
+}).then(() => {
+  window.READY = true;
+  if (window.RENDER) return;
+  let t0 = performance.now();
+  document.body.onclick = () => (t0 = performance.now());
+  const loop = (now) => { window.seek(((now - t0) / 1000) % window.TOTAL); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+});
+const $ = (root, sel) => root.querySelector(sel);
+</script>
+</body>
+</html>

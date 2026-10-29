@@ -1,0 +1,73 @@
+{
+  "template": "showcase.html",
+  "badge": "Yeni layihə",
+  "subtitle": "onlayn ətir mağazası\n**Sentri** tərəfindən hazırlandı",
+  "project": {
+    "name": "Palıd\nPerfumery",
+    "url": "Palıd Perfumery",
+    "page": "assets/projects/palid/page.jpg",
+    "header": "assets/projects/palid/header.png",
+    "pageWidth": 1484
+  },
+  "stops": [
+    {
+      "t": 3.2,
+      "y": 0,
+      "caption": "Brendlər və saatlıq endirim"
+    },
+    {
+      "t": 6.2,
+      "y": 1000,
+      "caption": "Həftəlik endirimlər"
+    },
+    {
+      "t": 9.2,
+      "y": 1860,
+      "caption": "Top 10 və kateqoriyalar"
+    },
+    {
+      "t": 12.2,
+      "y": 2230,
+      "caption": "Rahat filtrlər"
+    },
+    {
+      "t": 15.2,
+      "y": 2873,
+      "caption": "WhatsApp ilə sifariş"
+    }
+  ],
+  "detailsTitle": "Hər detal\n**satış üçün**",
+  "cards": [
+    {
+      "src": "assets/projects/palid/timer.png",
+      "x": 60,
+      "y": 560,
+      "w": 480,
+      "r": -3
+    },
+    {
+      "src": "assets/projects/palid/product.png",
+      "x": 640,
+      "y": 520,
+      "w": 380,
+      "r": 4
+    },
+    {
+      "src": "assets/projects/palid/group.png",
+      "x": 80,
+      "y": 1080,
+      "w": 440,
+      "r": 2
+    },
+    {
+      "src": "assets/projects/palid/whatsapp.png",
+      "x": 300,
+      "y": 1440,
+      "w": 560,
+      "r": -2
+    }
+  ],
+  "statement": "Sizin biznesiniz üçün də\n**sayt hazırlayaq**",
+  "services": "Vebsayt · İT infrastruktur · Kibertəhlükəsizlik",
+  "button": "Ödənişsiz konsultasiya üçün yazın"
+}
