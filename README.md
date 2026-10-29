@@ -24,6 +24,7 @@ npx playwright install chromium
 | `headline` | main title (shown in capitals; `"uppercase": false` turns that off) |
 | `bullets` | list of points |
 | `image` | optional background photo, e.g. `assets/images/hacker.jpg` (the text area is darkened automatically) |
+| `visual` | `"phone"` draws a 3D phone mockup (SMS + incoming call) on the right; the text column narrows to fit |
 | `footer` | bottom-left message |
 
 **Text colours** work in every field: `**orange**`, `__red__`, `++blue++`, and `\n` for a new line.

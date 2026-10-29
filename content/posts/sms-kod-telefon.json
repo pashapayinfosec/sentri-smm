@@ -1,0 +1,12 @@
+{
+  "format": "post",
+  "visual": "phone",
+  "headline": "SMS kodunu\n**kimə deyirsiniz?**",
+  "headlineSize": 62,
+  "bullets": [
+    "**Kod razılıq deməkdir:** onu deyən əməliyyatı təsdiqləyir.",
+    "**Özünüz başlatmamısınızsa:** kodu heç kimə deməyin.",
+    "**Şübhə varsa:** bankın rəsmi nömrəsinə özünüz zəng edin."
+  ],
+  "footer": "Əmin deyilsinizsə —\n**kodu deməyin**"
+}
