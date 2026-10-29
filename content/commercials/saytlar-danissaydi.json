@@ -1,0 +1,52 @@
+{
+  "_qeyd": "Seriya 1: «Saytlar danışsaydı». Hər səhnə üçün AI video aləti ilə klip yaradın: master_prompt + səhnənin prompt-u. Klipi 'clip' yolunda saxlayın, sonra render edin: node scripts/commercial.js content/commercials/saytlar-danissaydi.json. Səsləndirmə: sayt personajının səsi (line) azərbaycan dilini ana dili kimi danışan aktyorla, yorğun, amma mehriban, yüngül yumorlu tonda yazılmalıdır. Dodaq sinxronu lazım deyil: personajın ağzı sadə animasiyadır.",
+  "series": "Saytlar danışsaydı",
+  "music": "",
+  "master_prompt": "Create a short stylized 3D animated sequence (soft, rounded, friendly style, like a modern explainer cartoon) for an IT company's social media. Main character: a website personified as a living web page inside a smartphone screen. It has a simple face (two expressive eyes, eyebrows, a small mouth) on the page header, and two thin cartoon arms coming from the sides of the page. It looks tired but expressive: slightly drooping eyelids, sighs, relatable office-worker humour. The page body shows only abstract blocks: an image placeholder, grey text lines, and one large rounded order button in warm yellow #ffd166. Visitors are tiny simple rounded figures in light blue. Background: a smooth diagonal gradient from deep navy #05206b through royal blue #0a3aa7 to bright blue #1668dc. Use red #ff5a6a only for error moments (the stuck button glow). Keep the same phone, character design, colours and lighting in every shot. The phone sits in the centre of the frame. Do not generate any readable text, letters, numbers, logos, brand names or UI labels anywhere; all text and Azerbaijani dialogue are added in editing. Keep the upper middle and the lower third of the frame visually calm for subtitles. Vertical 9:16 composition.",
+  "shots": [
+    {
+      "title": "Şikayət",
+      "start": 0, "end": 4,
+      "action": "Telefon ekranında yorğun sayt personajı. Kameraya baxıb ah çəkir, sarı sifariş düyməsini göstərir.",
+      "line": "Reklama pul verirsən, amma mənim sifariş düyməm işləmir…",
+      "clip": "assets/clips/s1-1-sikayet.mp4",
+      "prompt": "Immediate close framing on the smartphone. The tired website character looks straight into the camera, lets out a long sigh, then raises one arm and points down at its yellow order button with exaggerated frustration. The scene starts already in motion from the first frame, no intro."
+    },
+    {
+      "title": "Reklam",
+      "start": 4, "end": 9,
+      "action": "Reklam bannerlərindən telefona kiçik ziyarətçilər axışır. Personaj bir anlıq sevinir.",
+      "line": "Bax, reklamdan adamlar gəlir…",
+      "clip": "assets/clips/s1-2-reklam.mp4",
+      "prompt": "Small rounded ad cards (blank, no text, just a picture icon and a megaphone shape) float in from the edges and release a stream of tiny light-blue visitor figures that walk into the smartphone screen. The website character perks up for a moment, eyebrows rising hopefully. Slight camera pull-back to show the stream."
+    },
+    {
+      "title": "Düymə ilişir",
+      "start": 9, "end": 14,
+      "action": "Ziyarətçi sifariş düyməsini basır, düymə ilişib qalır, qırmızı yanıb-sönür. Personaj gözlərini yumur.",
+      "line": "Düyməni basırlar… heç nə olmur.",
+      "clip": "assets/clips/s1-3-dume.mp4",
+      "prompt": "Close-up on the yellow order button. A tiny visitor figure presses it with both hands; the button sinks halfway, gets stuck, jitters and glows red #ff5a6a. The visitor presses again, nothing happens. The website character covers its eyes with one hand in embarrassment."
+    },
+    {
+      "title": "Gedirlər",
+      "start": 14, "end": 19,
+      "action": "Ziyarətçilər çiyinlərini çəkib bir-bir ekrandan çıxır. Personaj qəzəblə ilişmiş düyməni göstərir.",
+      "line": "Müştəri gözləmir. Çıxıb gedir.",
+      "clip": "assets/clips/s1-4-gedirler.mp4",
+      "prompt": "The visitor figures shrug and walk out of the smartphone screen one by one, leaving it empty. The website character turns to the camera with frustrated, slightly comic indignation and jabs its finger repeatedly at the stuck red-glowing button."
+    },
+    {
+      "title": "Xahiş",
+      "start": 19, "end": 23,
+      "action": "Personaj sakitləşir, kameraya yaxınlaşıb xahiş edir.",
+      "line": "Heç olmasa bir dəfə özün sifariş ver, yoxla.",
+      "clip": "assets/clips/s1-5-xahis.mp4",
+      "prompt": "The website character calms down, leans closer to the camera with a tired but friendly pleading look, and gestures toward the viewer as if handing them the phone. Gentle slow push-in."
+    }
+  ],
+  "endcard": {
+    "start": 23, "end": 26,
+    "line": "Reklamdan əvvəl saytının **işlədiyini** yoxla."
+  }
+}

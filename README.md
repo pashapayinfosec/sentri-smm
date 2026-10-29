@@ -63,6 +63,16 @@ Photorealistic footage must come from an AI video tool (Veo, Kling, Sora, Runway
 2. Save each clip at the shot's `clip` path (e.g. `assets/clips/1-problem.mp4`). Any aspect ratio works; it is cropped to 9:16 and trimmed or held to fit the slot.
 3. Run `node scripts/commercial.js content/commercials/it-destek.json` -> `out/it-destek.mp4` (30s, 1080×1920).
 
+Optional overlay fields: `series` (series name pill, top-left), `label` (yellow disclaimer pill under it, e.g. "Nümunə ssenari") and per-shot `tag` (big yellow on-screen label, e.g. a numbered step). All are drawn in editing, so AI clips never need readable text.
+
+Website-problem Reels series (same palette and subtitle style, a different visual treatment each):
+
+| File | Series | Look |
+|---|---|---|
+| `content/commercials/saytlar-danissaydi.json` | Saytlar danışsaydı | 3D cartoon website character in a phone |
+| `content/commercials/150-saytin-arxasindan.json` | 150 saytın arxasından (Nümunə ssenari) | isometric motion graphics, glowing envelope |
+| `content/commercials/sahibkarin-30-saniyesi.json` | Sahibkarın 30 saniyəsi | realistic phone close-up, numbered checks |
+
 Shots without a clip yet show a storyboard frame, so the full timing can be reviewed before any footage exists. Azerbaijani dialogue subtitles, the logo and the end card are added automatically; set `music` for a soundtrack. Dialogue audio (voice actors or voiceover) is recorded separately.
 
 ## Colour palette (use for everything)

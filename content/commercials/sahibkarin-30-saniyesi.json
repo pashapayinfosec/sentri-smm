@@ -1,0 +1,51 @@
+{
+  "_qeyd": "Seriya 3: «Sahibkarın 30 saniyəsi». Üç yoxlama etiketi ('tag') səhnələrdə bir-bir görünür. Səsləndirmə: qısa, praktiki, mehriban kadr arxası səs, azərbaycan dilini ana dili kimi danışan diktor; suallar sual intonasiyası ilə oxunmalıdır.",
+  "series": "Sahibkarın 30 saniyəsi",
+  "music": "",
+  "master_prompt": "Create a short, clean, realistic product-style video for an IT company's social media. Subject: a close-up of an adult's hands holding a modern smartphone that shows a fictional small-business website (an invented cafe-style business with no name: a hero photo of pastries, abstract grey text lines, a clearly visible rounded contact button in warm yellow #ffd166, and a simple contact form with empty fields). The background is a softly blurred modern office or shop counter with a cool blue colour grade matching deep navy #05206b, royal blue #0a3aa7 and bright blue #1668dc. Use smooth, steady camera moves and gentle zooms into the screen. Highlights are soft yellow #ffd166 glow rings; use red #ff5a6a only if something is wrong. Keep the same hands, phone, fictional website and lighting in every shot. Do not generate any readable text, letters, numbers, logos, brand names or UI labels anywhere; screens show only abstract shapes. All text and the Azerbaijani voiceover are added in editing. Keep the upper middle and the lower third of the frame visually calm for overlays. Vertical 9:16 composition.",
+  "shots": [
+    {
+      "title": "Çağırış",
+      "start": 0, "end": 3,
+      "action": "Əl telefonu kameraya doğru qaldırır, brauzeri açır.",
+      "line": "İndi saytını telefondan aç və bunu yoxla.",
+      "voiceover": true,
+      "clip": "assets/clips/s3-1-cagiris.mp4",
+      "prompt": "Start in motion: a hand lifts the smartphone into frame and the thumb taps to open the browser. Quick, energetic but smooth push-in toward the screen."
+    },
+    {
+      "title": "Açılış",
+      "start": 3, "end": 8,
+      "action": "Sayt yüklənir, səhifə rahat aşağı sürüşdürülür. Səhifənin ətrafında sarı vurğu halqası.",
+      "tag": "1. Açılışı yoxla",
+      "line": "Sayt rahat açılır?",
+      "voiceover": true,
+      "clip": "assets/clips/s3-2-acilis.mp4",
+      "prompt": "The fictional website loads on the phone screen block by block, then the thumb scrolls smoothly down the page. A soft yellow glow outline frames the whole screen once it has loaded. Steady close-up."
+    },
+    {
+      "title": "Əlaqə düyməsi",
+      "start": 8, "end": 13,
+      "action": "Kamera əlaqə düyməsinə yaxınlaşır, düymə sarı halqa ilə vurğulanır.",
+      "tag": "2. Əlaqə düyməsini tap",
+      "line": "Əlaqə düyməsi görünür?",
+      "voiceover": true,
+      "clip": "assets/clips/s3-3-elaqe.mp4",
+      "prompt": "Smooth zoom into the phone screen toward the yellow contact button. A soft yellow glow ring pulses around the button once, and the thumb hovers over it. Clean transition."
+    },
+    {
+      "title": "Test müraciəti",
+      "start": 13, "end": 19,
+      "action": "Barmaq formanı doldurub göndərir. Sonra masadakı noutbukda poçt qutusuna yeni məktub düşür.",
+      "tag": "3. Test müraciəti göndər",
+      "line": "Formadan göndərdiyin müraciət sənə çatır?",
+      "voiceover": true,
+      "clip": "assets/clips/s3-4-test.mp4",
+      "prompt": "The thumb fills the empty form fields (fields fill with abstract grey bars) and taps the send button. The camera then racks focus to a laptop on the desk behind the phone, where a new abstract row slides into an inbox with a soft yellow glow. No readable text."
+    }
+  ],
+  "endcard": {
+    "start": 19, "end": 22,
+    "line": "Bu videonu **saxla**,\nsaytını yoxla."
+  }
+}

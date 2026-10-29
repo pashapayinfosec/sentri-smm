@@ -1,0 +1,67 @@
+{
+  "_qeyd": "Seriya 2: «150 saytın arxasından». Bu, NÜMUNƏ SSENARİDİR: real müştəri hadisəsi kimi təqdim edilmir, ona görə 'label' sahəsində «Nümunə ssenari» hər kadrda görünür. Yalnız şirkət bu hadisənin real baş verdiyini təsdiqləsə: 'label' sahəsini silin və 1-ci səhnənin line-ını «Sayt açılırdı. Amma sifarişlər sahibinə çatmırdı.» ilə əvəz edin. Müştəri adı, rəy və nəticə rəqəmləri əlavə etməyin. Səsləndirmə: sakit, inamlı kadr arxası səs (voiceover), azərbaycan dilini ana dili kimi danışan diktor.",
+  "series": "150 saytın arxasından",
+  "label": "Nümunə ssenari",
+  "music": "",
+  "master_prompt": "Create a short stylized 3D motion-graphics sequence with a clean isometric look for an IT company's social media. Story: a customer's order travels from a website to a business owner's inbox as a glowing envelope, but gets stuck halfway. Visual world: a simplified isometric scene on a smooth diagonal gradient from deep navy #05206b through royal blue #0a3aa7 to bright blue #1668dc. On one side, a smartphone showing an abstract website with a contact form (only empty input fields and one yellow send button, no text). On the other side, a laptop on a small desk belonging to a business owner (a simple, friendly stylized adult character in a smart-casual outfit). Between them, a thin glowing path of light like a pipeline. The order is a glowing envelope in warm yellow #ffd166 with a soft light trail. Use red #ff5a6a only for the blockage point on the path. Keep the same scene layout, characters, colours and lighting in every shot. Do not generate any readable text, letters, numbers, logos, brand names or UI labels anywhere; screens show only abstract shapes. All text and the Azerbaijani voiceover are added in editing. Keep the top-left corner, the upper middle and the lower third of the frame visually calm for overlays. Vertical 9:16 composition.",
+  "shots": [
+    {
+      "title": "Giriş",
+      "start": 0, "end": 4,
+      "action": "Sayt telefonda normal açılır. Kamera telefondan uzaqdakı sahibkarın boş poçt qutusuna sürüşür.",
+      "line": "Sayt açıla bilər, amma sifarişlər sahibinə çatmaya bilər.",
+      "voiceover": true,
+      "clip": "assets/clips/s2-1-hook.mp4",
+      "prompt": "Start in motion: the abstract website loads smoothly on the smartphone with a soft confident glow. The camera then glides along the glowing path to the business owner's laptop, where an empty inbox (just empty grey rows) is visible."
+    },
+    {
+      "title": "Göndərilir",
+      "start": 4, "end": 9,
+      "action": "Müştəri formanı doldurub göndər düyməsini basır. Sifariş parlayan zərfə çevrilib yola düşür.",
+      "line": "Müştəri formanı doldurur, göndərir…",
+      "voiceover": true,
+      "clip": "assets/clips/s2-2-gonderilir.mp4",
+      "prompt": "Close-up of the smartphone: a customer's finger fills the empty form fields (shown as fields filling with abstract grey bars) and taps the yellow send button. The form folds itself into a glowing yellow envelope, which lifts off the screen and starts gliding along the light path."
+    },
+    {
+      "title": "Yolda qalır",
+      "start": 9, "end": 14,
+      "action": "Zərf yolun ortasında ilişir, titrəyir, işığı sönməyə başlayır. Yolda qırmızı tıxac nöqtəsi.",
+      "line": "…amma müraciət yolda qalır.",
+      "voiceover": true,
+      "clip": "assets/clips/s2-3-yolda.mp4",
+      "prompt": "The glowing envelope travels along the path, then suddenly stops halfway at a red #ff5a6a blockage point, jitters against an invisible barrier and its glow slowly dims. Camera slowly orbits the stuck envelope."
+    },
+    {
+      "title": "Boş qutu",
+      "start": 14, "end": 18,
+      "action": "Sahibkar noutbukda poçtu yeniləyir, qutu boşdur. Çaşqın halda çiynini çəkir.",
+      "line": "Sahibkar isə elə bilir ki, sifariş yoxdur.",
+      "voiceover": true,
+      "clip": "assets/clips/s2-4-bos-qutu.mp4",
+      "prompt": "The business owner at the laptop refreshes the inbox, which stays empty (only empty grey rows). They lean back, puzzled, and shrug. In the soft-focus background, the stuck envelope is still visible on the path."
+    },
+    {
+      "title": "Test müraciəti",
+      "start": 18, "end": 22,
+      "action": "Sahibkar telefonu götürüb özü test müraciəti göndərir. İkinci zərf də eyni nöqtədə ilişir, tıxac vurğulanır.",
+      "line": "Bir test müraciəti problemi üzə çıxarır.",
+      "voiceover": true,
+      "clip": "assets/clips/s2-5-test.mp4",
+      "prompt": "The business owner picks up the smartphone and sends a test from the same form. A second glowing envelope travels the path and stops at exactly the same red blockage point. A soft spotlight ring highlights the blockage. The owner's expression changes to understanding."
+    },
+    {
+      "title": "Düzəldi",
+      "start": 22, "end": 26,
+      "action": "Tıxac aradan qalxır, hər iki zərf yoluna davam edib poçt qutusuna düşür.",
+      "line": "Problem tapılanda müraciətlər yenə sahibinə çatır.",
+      "voiceover": true,
+      "clip": "assets/clips/s2-6-duzeldi.mp4",
+      "prompt": "The red blockage point dissolves and turns into a calm blue segment of the path. Both glowing envelopes continue gliding and land softly in the laptop's inbox, which now shows two new abstract rows. The business owner nods with relief. Calm, satisfying motion."
+    }
+  ],
+  "endcard": {
+    "start": 26, "end": 29,
+    "line": "Formanı doldur.\nMüraciətin sənə **çatdığını** yoxla."
+  }
+}
