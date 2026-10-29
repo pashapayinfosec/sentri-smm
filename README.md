@@ -60,6 +60,10 @@ Every scene accepts `duration` (seconds) if you want to override the default tim
 
 `content/reels/palid-showcase.json` uses `templates/showcase.html`: intro, the client's full-page screenshot scrolling smoothly inside a browser frame with feature captions (`stops`), floating detail crops (`cards`), and a Sentri end card. Assets for Palıd Perfumery are in `assets/projects/palid/` (the full page was stitched from a screen recording).
 
+## Client site on real laptop footage
+
+`scripts/screen_replace.py` tracks the laptop screen in a stock clip and plays the client's page scrolling on it; `templates/overlay.html` (data in `content/footage/palid-laptop.json`) adds the title and tags on top. See the header of the script for usage; screen corners for another clip go in `Q0`.
+
 ## Live-action commercial (AI video clips + Sentri branding)
 
 Photorealistic footage must come from an AI video tool (Veo, Kling, Sora, Runway…) or a real shoot. This repo does the editing part.
