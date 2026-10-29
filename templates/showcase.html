@@ -120,7 +120,7 @@ loadData().then((d) => {
     sticky.style.opacity = clamp((y - 120) / 80);
     // caption chip for the current stop
     let cur = null;
-    d.stops.forEach((s) => { if (t >= s.t - 0.2 && t < s.t + (s.hold || 2.2)) cur = s; });
+    d.stops.forEach((s) => { if (s.caption && t >= s.t - 0.2 && t < s.t + (s.hold || 2.2)) cur = s; });
     const chipText = $(chip, "span");
     if (cur) {
       chipText.innerHTML = rich(cur.caption);

@@ -54,7 +54,7 @@ async function renderReel(browser, port, data, out) {
   const page = await openPage(browser, port, data.template || "reel.html", data, { width: 1080, height: 1920 });
   const total = await page.evaluate(() => window.TOTAL);
   const frames = Math.round(total * FPS);
-  const music = data.music ? path.join(ROOT, data.music) : null;
+  const music = data.music && fs.existsSync(path.join(ROOT, data.music)) ? path.join(ROOT, data.music) : null;
   const args = ["-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", String(FPS), "-i", "-"];
   if (music) args.push("-i", music, "-af", `afade=t=out:st=${Math.max(0, total - 1.5)}:d=1.5`, "-shortest", "-c:a", "aac", "-b:a", "192k");
   args.push("-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "medium", "-crf", "18", "-r", String(FPS), "-movflags", "+faststart", out);

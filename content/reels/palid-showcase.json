@@ -33,7 +33,7 @@
     {
       "t": 15.2,
       "y": 2873,
-      "caption": "WhatsApp ilə sifariş"
+      "caption": ""
     }
   ],
   "detailsTitle": "Hər detal\n**satış üçün**",
@@ -69,5 +69,6 @@
   ],
   "statement": "Sizin biznesiniz üçün də\n**sayt hazırlayaq**",
   "services": "Vebsayt · İT infrastruktur · Kibertəhlükəsizlik",
-  "button": "Ödənişsiz konsultasiya üçün yazın"
+  "button": "Ödənişsiz konsultasiya üçün yazın",
+  "music": "assets/audio/palid-music.m4a"
 }
